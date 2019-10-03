@@ -1,0 +1,9 @@
+{
+	"name": "Entropy",
+	"version": "0.0.0",
+	"factorio_version": "0.17",
+	"dependencies": ["base >= 0.17.0"],
+	"title": "Entropy",
+	"author": "Tawaxaan",
+	"description": "TODO: Write description."
+}
