@@ -1,7 +1,7 @@
 local settings = require( "settings" )
 
-local math = require( "code.common.math"  )
-require( "code.common.other" )
+local math   = require( "code.common.math"  )
+local common = require( "code.common.other" )
 
 --______________________________________________________________________________________________________________________
 --############################################################################## DAYTIME AJUST #########################
@@ -30,7 +30,7 @@ local function adjust_inserter_dropoff_point( inserter )
     elseif pos_target.y < 0 then vec_offset.y = ( pos_target.y < -dist and  0.5 or -0.5 )
     end
 
-    inserter[pos_type] = math.vector_sum(  inserter[pos_type], vec_offset )
+    inserter[pos_type] = math.vector_sum( inserter[pos_type], vec_offset )
 end
 
 --****************************************************************************** Drop-off point adjust event

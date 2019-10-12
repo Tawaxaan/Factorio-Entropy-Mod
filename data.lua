@@ -1,2 +1,2 @@
-require("prototypes.hotkeys")
-require("code.entities.entities")
+require( "prototypes.hotkeys" )
+require( "code.entities"      )
