@@ -1,7 +1,11 @@
+require( "code.common.log" )
+
 local settings = require( "settings" )
 
-local math   = require( "code.common.math"  )
-local common = require( "code.common.other" )
+local math   = require( "code.common.math"   )
+local common = require( "code.common.other"  )
+
+local trees  = require( "code.terrain.trees" )
 
 --______________________________________________________________________________________________________________________
 --############################################################################## DAYTIME AJUST #########################
@@ -10,6 +14,7 @@ local common = require( "code.common.other" )
 local day_length = 24
 
 script.on_init( function()
+    _log( "Entropy started", true )
     game.surfaces[ 1 ].ticks_per_day = day_length * 60 * 60
 end)
 
@@ -46,3 +51,7 @@ script.on_event( "fe_inserter-dropoff-point", function( event )
 end)
 
 --######################################################################################################################
+
+script.on_nth_tick( 60, function( ev )
+    trees.forest_process()
+end)
