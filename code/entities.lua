@@ -1,1 +1,1 @@
-require("code.entities.inserters")
+require( "code.entities.inserters" )

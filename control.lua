@@ -1,57 +1,50 @@
-require( "code.common.log" )
-
 local settings = require( "settings" )
 
-local math   = require( "code.common.math"   )
-local common = require( "code.common.other"  )
+require( "code._common.log" )
 
-local trees  = require( "code.terrain.trees" )
+local _common   = require( "code._common.generic"    )
+local _forest   = require( "code.terrain.forest"     )
+local _inserter = require( "code.functions.inserter" )
+
+--------------------------------------------------------------------------------
+local DAY_LENGTH = 24 -- Length of day (real minutes)
+--------------------------------------------------------------------------------
+
 
 --______________________________________________________________________________________________________________________
---############################################################################## DAYTIME AJUST #########################
+--############################################################################## FOREST PROCESSING #####################
 
--- Length of day (in real minutes).
-local day_length = 24
-
-script.on_init( function()
-    _log( "Entropy started", true )
-    game.surfaces[ 1 ].ticks_per_day = day_length * 60 * 60
+--****************************************************************************** Chunks processing iteration interval
+script.on_nth_tick( _forest.PROCESS_INTERVAL, function( event )
+    _forest.process()
 end)
 
+
 --______________________________________________________________________________________________________________________
---############################################################################## INSERTER DROP-OFF POINT ADJUST ########
+--############################################################################## INSERTERS #############################
 
-
---****************************************************************************** Drop-off point adjusting
-local function adjust_inserter_dropoff_point( inserter )
-    local pos_type   = "drop_position"
-    local pos_target = math.vector_diff( inserter[ pos_type ], inserter.position )
-    local dist       = string.find( inserter.name, "long%-handed" ) and 2 or 1
-    local vec_offset = { x = 0, y = 0 }
-
-    if     pos_target.x > 0 then vec_offset.x = ( pos_target.x >  dist and -0.5 or  0.5 )
-    elseif pos_target.x < 0 then vec_offset.x = ( pos_target.x < -dist and  0.5 or -0.5 )
-    elseif pos_target.y > 0 then vec_offset.y = ( pos_target.y >  dist and -0.5 or  0.5 )
-    elseif pos_target.y < 0 then vec_offset.y = ( pos_target.y < -dist and  0.5 or -0.5 )
-    end
-
-    inserter[pos_type] = math.vector_sum( inserter[pos_type], vec_offset )
-end
-
---****************************************************************************** Drop-off point adjust event
-script.on_event( "fe_inserter-dropoff-point", function( event )
+--****************************************************************************** Drop-off point swap event
+script.on_event( "fe_inserter-dropoff-point-swap", function( event )
     local player = game.players[ event.player_index ]
     if player.selected and player.selected.type == "inserter" then
         if player.can_reach_entity( player.selected ) then
-            adjust_inserter_dropoff_point( player.selected )
+            _inserter.dropoff_point_swap( player.selected )
         else
-            common.player_cannot_reach( player, player.selected )
+            _common.player_cannot_reach( player, player.selected )
         end
     end
 end)
 
---######################################################################################################################
 
-script.on_nth_tick( 60, function( ev )
-    trees.forest_process()
+--______________________________________________________________________________________________________________________
+--############################################################################## GERERIC ENGINE EVENTS #################
+
+script.on_init( function()
+    _debug( "Entropy started", true )
+    _log(   "Entropy started", true )
+    -- Daytime length adjusting
+    game.surfaces[ 1 ].ticks_per_day = DAY_LENGTH * 60 * 60
 end)
+
+
+--######################################################################################################################
