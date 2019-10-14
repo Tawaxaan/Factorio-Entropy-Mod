@@ -1,8 +1,8 @@
 local settings = require( "settings" )
 
-require( "code._common.log" )
+require( "code.common.log" )
 
-local _common   = require( "code._common.generic"    )
+local _common   = require( "code.common.generic"    )
 local _forest   = require( "code.terrain.forest"     )
 local _inserter = require( "code.functions.inserter" )
 
@@ -24,7 +24,7 @@ end)
 --############################################################################## INSERTERS #############################
 
 --****************************************************************************** Drop-off point swap event
-script.on_event( "fe_inserter-dropoff-point-swap", function( event )
+script.on_event( "entropy-inserter-dropoff-point-swap", function( event )
     local player = game.players[ event.player_index ]
     if player.selected and player.selected.type == "inserter" then
         if player.can_reach_entity( player.selected ) then
