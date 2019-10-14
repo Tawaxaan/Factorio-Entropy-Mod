@@ -2,7 +2,10 @@
 	"name": "Entropy",
 	"version": "0.0.0",
 	"factorio_version": "0.17",
-	"dependencies": ["base >= 0.17.0"],
+	"dependencies": [
+        "base >= 0.17.0",
+        "alien-biomes >= 0.4.15"
+    ],
 	"title": "Entropy",
 	"author": "Tawaxaan",
 	"description": "TODO: Write description."
