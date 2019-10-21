@@ -3,7 +3,7 @@ local _forest = {}
 local util   = require( 'util'        )
 local _math  = require( 'common/math' )
 --------------------------------------------------------------------------config
-_forest.conf = require( '$terrain/forest/_conf' )
+_forest.conf = require( '#terrain/forest/_conf' )
 ---------------------------------------------------------------------------local
 
 local surface

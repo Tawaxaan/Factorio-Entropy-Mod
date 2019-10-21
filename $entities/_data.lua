@@ -1,1 +1,0 @@
-require( '$entities/inserters/_data' )

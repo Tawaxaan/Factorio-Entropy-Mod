@@ -1,9 +1,9 @@
 -------------------------------------------------------------------------require
 local _common   = require( 'common.generic'            )
 
-local _planet   = require( '$planet/_ctrl'             )
-local _forest   = require( "$terrain/forest/_ctrl"     )
-local _inserter = require( '$entities/inserters/_ctrl' )
+local _planet   = require( '#planet/_ctrl'             )
+local _forest   = require( "#terrain/forest/_ctrl"     )
+local _inserter = require( '#entities/inserters/_ctrl' )
 --------------------------------------------------------------------------config
 ---------------------------------------------------------------------------local
 
