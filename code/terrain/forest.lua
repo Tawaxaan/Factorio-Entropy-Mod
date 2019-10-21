@@ -4,88 +4,92 @@ require( "code.common.log" )
 local _math = require( "code.common.math"   )
 local _forest = {}
 --------------------------------------------------------------------------------
-_forest.PROCESS_INTERVAL = 1 -- Processing iteration interval (tick)
+_forest.CHUNKS_COUNT_INTERVAL = 5 -- Interval for chunk count calculation (minutes)
+_forest.PROCESS_INTERVAL      = 1 -- Interval for processing iteration (tick)
 --------------------------------------------------------------------------------
 
+local surface
+local chunks_count = 1024
 
 --______________________________________________________________________________________________________________________
---############################################################################## FOREST SPREADING ######################
+--############################################################################## FOREST PROCESSING #####################
 
 --****************************************************************************** Spread one tree
-local function tree_spread( surface, parent_tree )
+local function tree_process( tree )
     local radius = 10
     local offset = { x = math.random( -radius, radius),
                      y = math.random( -radius, radius) }
-    local new_tree_pos = _math.vector_sum( parent_tree.position, offset )
+    local new_tree_pos = _math.vector_sum( tree.position, offset )
     local tile = surface.get_tile( new_tree_pos )
     --_log( "    " .. tile.name )
 
 -- Temporary realisation for tree-growth-scaled-trees mod ----------------------
-    if util.string_starts_with( parent_tree.name, "dry-tree") then return end
-    if util.string_starts_with( parent_tree.name, "dead-grey") then return end
-    if util.string_starts_with( parent_tree.name, "dead-tree") then return end
-    if util.string_starts_with( parent_tree.name, "dead-dry") then return end
-    if util.string_starts_with( parent_tree.name, "dry-hairy") then return end
-    if util.string_starts_with( parent_tree.name, "tree-dryland") then return end
+    if util.string_starts_with( tree.name, "dry-tree") then return end
+    if util.string_starts_with( tree.name, "dead-grey") then return end
+    if util.string_starts_with( tree.name, "dead-tree") then return end
+    if util.string_starts_with( tree.name, "dead-dry") then return end
+    if util.string_starts_with( tree.name, "dry-hairy") then return end
+    if util.string_starts_with( tree.name, "tree-dryland") then return end
     local new_tree_name
-    if string.sub( parent_tree.name, string.len(parent_tree.name)-7 ) == "-sapling" then
-        new_tree_name = string.gsub( parent_tree.name, "-sapling", "-tiny" )
-        new_tree_pos  = parent_tree.position
-        parent_tree.destroy()
-    elseif string.sub( parent_tree.name, string.len(parent_tree.name)-4 ) == "-tiny" then
-        new_tree_name = string.gsub( parent_tree.name, "-tiny", "-large" )
-        new_tree_pos  = parent_tree.position
-        parent_tree.destroy()
-    elseif string.sub( parent_tree.name, string.len(parent_tree.name)-5 ) == "-large" then
-        new_tree_name = string.gsub( parent_tree.name, "-large", "" )
-        new_tree_pos  = parent_tree.position
-        parent_tree.destroy()
+    if string.sub( tree.name, string.len(tree.name)-7 ) == "-sapling" then
+        new_tree_name = string.gsub( tree.name, "-sapling", "-tiny" )
+        new_tree_pos  = tree.position
+        tree.destroy()
+    elseif string.sub( tree.name, string.len(tree.name)-4 ) == "-tiny" then
+        new_tree_name = string.gsub( tree.name, "-tiny", "-large" )
+        new_tree_pos  = tree.position
+        tree.destroy()
+    elseif string.sub( tree.name, string.len(tree.name)-5 ) == "-large" then
+        new_tree_name = string.gsub( tree.name, "-large", "" )
+        new_tree_pos  = tree.position
+        tree.destroy()
     else
-        new_tree_name = parent_tree.name .. "-sapling"
+        new_tree_name = tree.name .. "-sapling"
+        tree.destroy()
     end
 --------------------------------------------------------------------------------
 
-    --if util.string_starts_with( parent_tree.name, "young" ) then
-    --    return
-    --end
-    -- local new_tree_name = "young" .. parent_tree.name .. "-s1"
     local new_tree = { name = new_tree_name, position = new_tree_pos }
-    local canPlace = surface.can_place_entity( new_tree )
-    if canPlace then
+    local can_place = surface.can_place_entity( new_tree )
+    if can_place then
         surface.create_entity( new_tree )
     end
 end
 
 --****************************************************************************** Process one chunk
-local function chunk_process( surface, chunk )
+local function chunk_process( chunk )
     local area = {{ chunk.x * 32     , chunk.y * 32      },
                   { chunk.x * 32 + 32, chunk.y * 32 + 32 }}
     local trees = surface.find_entities_filtered{ area = area, type = "tree" }
     local trees_count = #trees
-    --_log( "  Trees count: " .. #trees )
     if trees_count > 0 then
-        --for i = 1, 10 do
-            local parent_tree = trees[ math.random( 1, trees_count ) ]
-            tree_spread( surface, parent_tree )
-        --end
+        local from = math.random( 1, 8 )
+        for i = from, trees_count, 8 do
+            tree_process( trees[ i ] )
+        end
     end
 end
+
+--______________________________________________________________________________________________________________________
+--############################################################################## MAIN FUNCTIONS ########################
 
 --****************************************************************************** Chunks processing iteration
 function _forest.process()
-    local surface = game.surfaces[ 1 ]
-    local chunks_count = 0
+    surface = surface or game.surfaces[ 1 ]
+    chunk_process( surface.get_random_chunk() )
+-- TODO: Add corresponding count of processing chunks with chunks_count
+end
+
+--****************************************************************************** Chunks count calculation
+function _forest.calc_chunks_count()
+    count = 0
     for chunk in surface.get_chunks() do
-        chunks_count = chunks_count + 1
-        --_log( "Chunk #" .. chunks_count )
-        chunk_process( surface, chunk )
+        count = count + 1
     end
-    --_log( "\nSurfaces count: " .. #game.surfaces )
-    --_log( "Chunks count:" .. chunks_count )
+    chunks_count = count
 end
 
 --******************************************************************************
-
 
 --######################################################################################################################
 

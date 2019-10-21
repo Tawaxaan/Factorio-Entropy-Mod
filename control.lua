@@ -14,7 +14,12 @@ local DAY_LENGTH = 24 -- Length of day (real minutes)
 --______________________________________________________________________________________________________________________
 --############################################################################## FOREST PROCESSING #####################
 
---****************************************************************************** Chunks processing iteration interval
+--****************************************************************************** Interval of chunks count calculating
+script.on_nth_tick( _forest.CHUNKS_COUNT_INTERVAL*3600, function( event )
+    _forest.calc_chunks_count()
+end)
+
+--****************************************************************************** Interval of chunks processing iteration
 script.on_nth_tick( _forest.PROCESS_INTERVAL, function( event )
     _forest.process()
 end)
