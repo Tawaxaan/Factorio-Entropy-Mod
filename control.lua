@@ -1,32 +1,40 @@
-local settings = require( "settings" )
+-------------------------------------------------------------------------require
+local _common   = require( 'common.generic'            )
 
-require( "code.common.log" )
-
-local _common   = require( "code.common.generic"    )
-local _forest   = require( "code.terrain.forest"     )
-local _inserter = require( "code.functions.inserter" )
-
---------------------------------------------------------------------------------
-local DAY_LENGTH = 24 -- Length of day (real minutes)
---------------------------------------------------------------------------------
+local _planet   = require( '$planet/_ctrl'             )
+local _forest   = require( "$terrain/forest/_ctrl"     )
+local _inserter = require( '$entities/inserters/_ctrl' )
+--------------------------------------------------------------------------config
+---------------------------------------------------------------------------local
 
 
 --______________________________________________________________________________________________________________________
 --############################################################################## FOREST PROCESSING #####################
 
---****************************************************************************** Interval of chunks count calculating
-script.on_nth_tick( _forest.CHUNKS_COUNT_INTERVAL*3600, function( event )
+--****************************************************************************** Chunks count calculating event
+script.on_nth_tick( _forest.conf.CHUNKS_COUNT_UPDATE_INTERVAL*3600, function( event )
     _forest.calc_chunks_count()
 end)
 
---****************************************************************************** Interval of chunks processing iteration
-script.on_nth_tick( _forest.PROCESS_INTERVAL, function( event )
+--****************************************************************************** Chunks processing iteration event
+script.on_nth_tick( _forest.conf.PROCESS_INTERVAL, function( event )
     _forest.process()
 end)
 
+--******************************************************************************
 
 --______________________________________________________________________________________________________________________
---############################################################################## INSERTERS #############################
+--############################################################################## GERERIC ENGINE EVENTS #################
+
+--****************************************************************************** Script on-init
+script.on_init( function()
+    _planet.set_daytime_length()
+end)
+
+--******************************************************************************
+
+--______________________________________________________________________________________________________________________
+--############################################################################## HOTKEYS EVENTS ########################
 
 --****************************************************************************** Drop-off point swap event
 script.on_event( "entropy-inserter-dropoff-point-swap", function( event )
@@ -35,21 +43,11 @@ script.on_event( "entropy-inserter-dropoff-point-swap", function( event )
         if player.can_reach_entity( player.selected ) then
             _inserter.dropoff_point_swap( player.selected )
         else
-            _common.player_cannot_reach( player, player.selected )
+            _common.player_cannot_reach_notification( player, player.selected )
         end
     end
 end)
 
-
---______________________________________________________________________________________________________________________
---############################################################################## GERERIC ENGINE EVENTS #################
-
-script.on_init( function()
-    _debug( "Entropy started", true )
-    _log(   "Entropy started", true )
-    -- Daytime length adjusting
-    game.surfaces[ 1 ].ticks_per_day = DAY_LENGTH * 60 * 60
-end)
-
+--******************************************************************************
 
 --######################################################################################################################

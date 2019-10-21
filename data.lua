@@ -1,6 +1,11 @@
-require( "prototypes.hotkeys" )
-require( "code.entities"      )
-require( "code.terrain"       )
+-------------------------------------------------------------------------require
+require( 'hotkeys' )
+
+require( '$entities/_data'    )
+--------------------------------------------------------------------------config
+---------------------------------------------------------------------------local
+
+
 
 -------------------------------------------------------------------------------- Alien Biomes configure
 -- Forced applying Alien Biomes alien-biomes-remove-obsolete-tiles startup setiing.

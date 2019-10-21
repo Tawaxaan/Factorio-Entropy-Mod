@@ -1,15 +1,18 @@
-local _math = require( "code.common.math"   )
-
 local _inserter = {}
---------------------------------------------------------------------------------
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------require
+local _math = require( 'common/math' )
+--------------------------------------------------------------------------config
+---------------------------------------------------------------------------local
 
+
+--______________________________________________________________________________________________________________________
+--############################################################################## CONTROL FUNCTIONS #####################
 
 --****************************************************************************** Drop-off point swap
 function _inserter.dropoff_point_swap( inserter )
-    local pos_type   = "drop_position"
+    local pos_type   = 'drop_position'
     local target_pos = _math.vector_diff( inserter[ pos_type ], inserter.position )
-    local dist       = string.find( inserter.name, "long%-handed" ) and 2 or 1
+    local dist       = string.find( inserter.name, 'long%-handed' ) and 2 or 1
     local offset     = { x = 0, y = 0 }
 
     if     target_pos.x > 0 then offset.x = ( target_pos.x >  dist and -0.5 or  0.5 )
@@ -22,5 +25,7 @@ function _inserter.dropoff_point_swap( inserter )
 end
 
 --******************************************************************************
+
+--######################################################################################################################
 
 return _inserter

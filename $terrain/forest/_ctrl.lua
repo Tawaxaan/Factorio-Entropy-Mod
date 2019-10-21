@@ -1,12 +1,10 @@
-local util = require('util')
-
-require( "code.common.log" )
-local _math = require( "code.common.math"   )
 local _forest = {}
---------------------------------------------------------------------------------
-_forest.CHUNKS_COUNT_INTERVAL = 5 -- Interval for chunk count calculation (minutes)
-_forest.PROCESS_INTERVAL      = 1 -- Interval for processing iteration (tick)
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------require
+local util   = require( 'util'        )
+local _math  = require( 'common/math' )
+--------------------------------------------------------------------------config
+_forest.conf = require( '$terrain/forest/_conf' )
+---------------------------------------------------------------------------local
 
 local surface
 local chunks_count = 1024
@@ -21,30 +19,30 @@ local function tree_process( tree )
                      y = math.random( -radius, radius) }
     local new_tree_pos = _math.vector_sum( tree.position, offset )
     local tile = surface.get_tile( new_tree_pos )
-    --_log( "    " .. tile.name )
+    --_debug( "    " .. tile.name )
 
 -- Temporary realisation for tree-growth-scaled-trees mod ----------------------
-    if util.string_starts_with( tree.name, "dry-tree") then return end
-    if util.string_starts_with( tree.name, "dead-grey") then return end
-    if util.string_starts_with( tree.name, "dead-tree") then return end
-    if util.string_starts_with( tree.name, "dead-dry") then return end
-    if util.string_starts_with( tree.name, "dry-hairy") then return end
-    if util.string_starts_with( tree.name, "tree-dryland") then return end
+    if util.string_starts_with( tree.name, 'dry-tree'    ) then return end
+    if util.string_starts_with( tree.name, 'dead-grey'   ) then return end
+    if util.string_starts_with( tree.name, 'dead-tree'   ) then return end
+    if util.string_starts_with( tree.name, 'dead-dry'    ) then return end
+    if util.string_starts_with( tree.name, 'dry-hairy'   ) then return end
+    if util.string_starts_with( tree.name, 'tree-dryland') then return end
     local new_tree_name
-    if string.sub( tree.name, string.len(tree.name)-7 ) == "-sapling" then
-        new_tree_name = string.gsub( tree.name, "-sapling", "-tiny" )
+    if string.sub( tree.name, string.len(tree.name)-7 ) == '-sapling' then
+        new_tree_name = string.gsub( tree.name, '-sapling', '-tiny' )
         new_tree_pos  = tree.position
         tree.destroy()
-    elseif string.sub( tree.name, string.len(tree.name)-4 ) == "-tiny" then
-        new_tree_name = string.gsub( tree.name, "-tiny", "-large" )
+    elseif string.sub( tree.name, string.len(tree.name)-4 ) == '-tiny' then
+        new_tree_name = string.gsub( tree.name, '-tiny', '-large' )
         new_tree_pos  = tree.position
         tree.destroy()
-    elseif string.sub( tree.name, string.len(tree.name)-5 ) == "-large" then
-        new_tree_name = string.gsub( tree.name, "-large", "" )
+    elseif string.sub( tree.name, string.len(tree.name)-5 ) == '-large' then
+        new_tree_name = string.gsub( tree.name, '-large', '' )
         new_tree_pos  = tree.position
         tree.destroy()
     else
-        new_tree_name = tree.name .. "-sapling"
+        new_tree_name = tree.name .. '-sapling'
         tree.destroy()
     end
 --------------------------------------------------------------------------------
@@ -60,7 +58,7 @@ end
 local function chunk_process( chunk )
     local area = {{ chunk.x * 32     , chunk.y * 32      },
                   { chunk.x * 32 + 32, chunk.y * 32 + 32 }}
-    local trees = surface.find_entities_filtered{ area = area, type = "tree" }
+    local trees = surface.find_entities_filtered{ area = area, type = 'tree' }
     local trees_count = #trees
     if trees_count > 0 then
         local from = math.random( 1, 8 )
@@ -70,8 +68,10 @@ local function chunk_process( chunk )
     end
 end
 
+--******************************************************************************
+
 --______________________________________________________________________________________________________________________
---############################################################################## MAIN FUNCTIONS ########################
+--############################################################################## EVENTS FUNCTIONS ######################
 
 --****************************************************************************** Chunks processing iteration
 function _forest.process()
