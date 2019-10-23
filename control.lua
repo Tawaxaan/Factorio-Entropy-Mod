@@ -1,34 +1,19 @@
 -------------------------------------------------------------------------require
-local _common   = require( 'common.generic'            )
+local _common   = require( 'common.generic'      )
 
-local _planet   = require( '#planet/_ctrl'             )
-local _forest   = require( "#terrain/forest/_ctrl"     )
-local _inserter = require( '#entities/inserters/_ctrl' )
+local _weather  = require( '#planet/weather'       )
+local _forest   = require( "#terrain/forest"     )
+local _inserter = require( '#entities/inserters' )
 --------------------------------------------------------------------------config
 ---------------------------------------------------------------------------local
 
-
---______________________________________________________________________________________________________________________
---############################################################################## FOREST PROCESSING #####################
-
---****************************************************************************** Chunks count calculating event
-script.on_nth_tick( _forest.conf.CHUNKS_COUNT_UPDATE_INTERVAL*3600, function( event )
-    _forest.calc_chunks_count()
-end)
-
---****************************************************************************** Chunks processing iteration event
-script.on_nth_tick( _forest.conf.PROCESS_INTERVAL, function( event )
-    _forest.process()
-end)
-
---******************************************************************************
 
 --______________________________________________________________________________________________________________________
 --############################################################################## GERERIC ENGINE EVENTS #################
 
 --****************************************************************************** Script on-init
 script.on_init( function()
-    _planet.set_daytime_length()
+    _weather.set_daytime_length()
 end)
 
 --******************************************************************************
@@ -46,6 +31,21 @@ script.on_event( "entropy-inserter-dropoff-point-swap", function( event )
             _common.player_cannot_reach_notification( player, player.selected )
         end
     end
+end)
+
+--******************************************************************************
+
+--______________________________________________________________________________________________________________________
+--############################################################################## FOREST PROCESSING #####################
+
+--****************************************************************************** Chunks count calculating event
+script.on_nth_tick( _forest.cfg.CHUNKS_COUNT_UPDATE_INTERVAL*3600, function( event )
+    _forest.calc_chunks_count()
+end)
+
+--****************************************************************************** Chunks processing iteration event
+script.on_nth_tick( _forest.cfg.PROCESS_INTERVAL, function( event )
+    _forest.process()
 end)
 
 --******************************************************************************

@@ -3,7 +3,7 @@ local _forest = {}
 local util   = require( 'util'        )
 local _math  = require( 'common/math' )
 --------------------------------------------------------------------------config
-_forest.conf = require( '#terrain/forest/_conf' )
+_forest.cfg = require( '#terrain/forest_cfg' )
 ---------------------------------------------------------------------------local
 
 local surface
@@ -77,7 +77,7 @@ end
 function _forest.process()
     surface = surface or game.surfaces[ 1 ]
     chunk_process( surface.get_random_chunk() )
--- TODO: Add corresponding count of processing chunks with chunks_count
+-- TODO: Add corresponding count of processing chunks with chunks_countz
 end
 
 --****************************************************************************** Chunks count calculation

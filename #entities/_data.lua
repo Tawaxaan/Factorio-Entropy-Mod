@@ -1,1 +1,1 @@
-require( '#entities/inserters/_data' )
+require( '#entities/inserters_dat' )

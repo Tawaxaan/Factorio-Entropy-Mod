@@ -1,15 +1,15 @@
-local _planet = {}
+local _weather = {}
 -------------------------------------------------------------------------require
 --------------------------------------------------------------------------config
-_planet.conf = require ( '#planet/_conf' )
+_weather.cfg = require ( '#planet/weather_cfg' )
 ---------------------------------------------------------------------------local
 
 
 --****************************************************************************** Daytime length adjusting
-function _planet.set_daytime_length()
+function _weather.set_daytime_length()
     game.surfaces[ 1 ].ticks_per_day = PLANET_DAY_LENGTH * 60 * 60
 end
 
 --******************************************************************************
 
-return _planet
+return _weather
