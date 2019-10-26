@@ -1,7 +1,7 @@
 -------------------------------------------------------------------------require
 local _common   = require( 'common.generic'      )
 
-local _weather  = require( '#planet/weather'       )
+local _weather  = require( '#planet/weather'     )
 local _forest   = require( "#terrain/forest"     )
 local _inserter = require( '#entities/inserters' )
 --------------------------------------------------------------------------config
