@@ -5,6 +5,7 @@ local _weather  = require( '#planet/weather'     )
 local _forest   = require( "#terrain/forest"     )
 local _inserter = require( '#entities/inserters' )
 --------------------------------------------------------------------------config
+require( 'config' )
 ---------------------------------------------------------------------------local
 
 
@@ -23,6 +24,7 @@ end)
 
 --****************************************************************************** Drop-off point swap event
 script.on_event( "entropy-inserter-dropoff-point-swap", function( event )
+    if T_E_S_T then return end
     local player = game.players[ event.player_index ]
     if player.selected and player.selected.type == "inserter" then
         if player.can_reach_entity( player.selected ) then
@@ -35,6 +37,7 @@ end)
 
 --****************************************************************************** Drop-off rotate event
 script.on_event( "entropy-inserter-dropoff-rotate", function( event )
+    if T_E_S_T then return end
     local player = game.players[ event.player_index ]
     if player.selected and player.selected.type == "inserter" then
         if player.can_reach_entity( player.selected ) then
