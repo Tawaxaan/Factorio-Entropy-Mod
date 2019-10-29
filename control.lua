@@ -33,6 +33,18 @@ script.on_event( "entropy-inserter-dropoff-point-swap", function( event )
     end
 end)
 
+--****************************************************************************** Drop-off rotate event
+script.on_event( "entropy-inserter-dropoff-rotate", function( event )
+    local player = game.players[ event.player_index ]
+    if player.selected and player.selected.type == "inserter" then
+        if player.can_reach_entity( player.selected ) then
+            _inserter.dropoff_rotate( player.selected )
+        else
+            _common.player_cannot_reach_notification( player, player.selected )
+        end
+    end
+end)
+
 --******************************************************************************
 
 --______________________________________________________________________________________________________________________
