@@ -7,15 +7,15 @@ _weather.cfg = require ( '#planet/weather_cfg' )
 
 --****************************************************************************** Daytime length adjusting
 function _weather.set_daytime_length()
-    local surface = game.surfaces[ 'nauvis' ]
-    surface.ticks_per_day = PLANET_DAY_LENGTH * 60 * 60
+    local nauvis = game.surfaces[ 'nauvis' ]
+    nauvis.ticks_per_day = PLANET_DAY_LENGTH * 60 * 60
     --[[
     TODO: Balance it
-    log(surface.dusk) -- 0.25
-    log(surface.dawn) -- 0.75
-    log(surface.evening) -- 0.45
-    log(surface.morning) -- 0.55
-    log(surface.min_brightness) -- 0.15
+    log(nauvis.dusk) -- 0.25
+    log(nauvis.dawn) -- 0.75
+    log(nauvis.evening) -- 0.45
+    log(nauvis.morning) -- 0.55
+    log(nauvis.min_brightness) -- 0.15
     ]]
 end
 
