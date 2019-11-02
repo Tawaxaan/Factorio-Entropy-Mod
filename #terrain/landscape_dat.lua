@@ -15,48 +15,56 @@ for _, v_tile in pairs( data.raw.tile ) do
 end
 
 --______________________________________________________________________________________________________________________
+--############################################################################## WATER #################################
+
+data.raw.tile[ 'deepwater'     ].tint = { r = 255, g = 100, b = 100 }
+data.raw.tile[ 'water'         ].tint = { r = 255, g = 120, b = 120 }
+data.raw.tile[ 'water-mud'     ].tint = { r = 220, g = 160, b = 170 }
+data.raw.tile[ 'water-shallow' ].tint = { r = 190, g = 160, b = 180 }
+
+--______________________________________________________________________________________________________________________
 --############################################################################## VOLCANIC BIOME ########################
 
 -------------------------------------------------------------------------------- Remove orange lava from volcanic tiles
 
-local tile
+data.raw.tile[ 'volcanic-orange-heat-2' ].variants  = data.raw.tile[ 'volcanic-orange-heat-1' ].variants
+data.raw.tile[ 'volcanic-orange-heat-3' ].variants  = data.raw.tile[ 'volcanic-orange-heat-1' ].variants
+data.raw.tile[ 'volcanic-orange-heat-4' ].variants  = data.raw.tile[ 'volcanic-orange-heat-1' ].variants
+data.raw.tile[ 'volcanic-orange-heat-4' ].map_color = data.raw.tile[ 'volcanic-orange-heat-1' ].map_color
 
-tile = table.deepcopy( data.raw.tile[ 'volcanic-orange-heat-1' ] )
-tile.name = 'volcanic-orange-heat-4'
-tile.tint = { r = 180, g = 180, b = 180 }
-data.raw.tile[ 'volcanic-orange-heat-4' ] = tile
-
-tile = table.deepcopy( data.raw.tile[ 'volcanic-orange-heat-1' ] )
-tile.name = 'volcanic-orange-heat-3'
-tile.tint = { r = 200, g = 200, b = 200 }
-data.raw.tile[ 'volcanic-orange-heat-3' ] = tile
-
-tile = table.deepcopy( data.raw.tile[ 'volcanic-orange-heat-1' ] )
-tile.name = 'volcanic-orange-heat-2'
-tile.tint = { r = 215, g = 215, b = 215 }
-data.raw.tile[ 'volcanic-orange-heat-2' ] = tile
-
-tile = data.raw.tile[ 'volcanic-orange-heat-1' ]
-tile.tint = { r = 235, g = 235, b = 235 }
+data.raw.tile[ 'volcanic-orange-heat-1' ].tint = { r = 235, g = 235, b = 235 }
+data.raw.tile[ 'volcanic-orange-heat-2' ].tint = { r = 215, g = 215, b = 215 }
+data.raw.tile[ 'volcanic-orange-heat-3' ].tint = { r = 200, g = 200, b = 200 }
+data.raw.tile[ 'volcanic-orange-heat-4' ].tint = { r = 180, g = 180, b = 180 }
 
 local decal = data.raw[ 'optimized-decorative' ][ 'lava-decal-orange' ]
 decal.autoplace.default_enabled = false
 
+--------------------------------------------------------------------------------
 
 --______________________________________________________________________________________________________________________
---############################################################################## GENERIC DECORATIONS ###################
+--############################################################################## GENERIC DECORATIONS COLOR TINT ########
 
--------------------------------------------------------------------------------- Volcanic
-local color = { r = 255, g = 60, b = 60 }
-local decal = data.raw[ 'optimized-decorative' ][ 'puddle-decal' ]
-for _, v_pic in ipairs( decal.pictures ) do
-    v_pic.tint = color
-    v_pic.apply_runtime_tint = true
-    if v_pic.hr_v_picersion then
-        v_pic.hr_v_picersion.tint = color
-        v_pic.hr_v_picersion.apply_runtime_tint = true
+local decalsTintColor = {}
+
+-- Volcanic land object
+decalsTintColor[ 'puddle-decal'    ] = { r = 255, g =  80, b = 100 }
+decalsTintColor[ 'dark-mud-decal'  ] = { r = 140, g = 140, b = 180 }
+-- Volcanic bush
+decalsTintColor[ 'brown-fluff-dry' ] = { r = 180, g = 180, b = 220 }
+decalsTintColor[ 'red-desert-bush' ] = { r = 180, g = 160, b = 200 }
+
+-------------------------------------------------------------------------------- Applying tint
+for decName, decColor in pairs( decalsTintColor ) do
+    local decal = data.raw[ 'optimized-decorative' ][ decName ]
+    for _, v_pic in pairs( decal.pictures ) do
+        v_pic.tint = decColor
+        if v_pic.hr_version then
+            v_pic.hr_version.tint = decColor
+        end
     end
 end
+
 --------------------------------------------------------------------------------
 
 --______________________________________________________________________________________________________________________

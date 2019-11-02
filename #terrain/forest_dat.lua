@@ -34,6 +34,26 @@ data:extend({
 })
 
 -------------------------------------------------------------------------------- TEMP
+---- DEV RECOLOR --------------
+---- DEV RECOLOR --------------
+---- DEV RECOLOR --------------
+
+    local tree = data.raw.tree['tree-volcanic-a']
+    for k, v in pairs ( tree.variations ) do
+        local color = { r = 200, g = 200, b = 255 }
+        v.leaves.tint = color
+        if v.leaves.hr_version then
+            v.leaves.hr_version.tint = color
+        end
+        local color = { r = 120, g = 160, b = 200 }
+        v.trunk.tint = color
+        if v.trunk.hr_version then
+           v.trunk.hr_version.tint = color
+        end
+    end
+---- DEV RECOLOR --------------
+---- DEV RECOLOR --------------
+---- DEV RECOLOR --------------
 data:extend({
   {
     type = "item-group",
