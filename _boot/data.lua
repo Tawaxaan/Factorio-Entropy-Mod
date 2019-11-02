@@ -93,7 +93,45 @@ local ignoredTechnologies = {
     --[[ Exception for Time-Tool mod ]] 'circuit-network'
 }
 
--------------------------------------------------------------------------------- Turn-off and remove all recipies
+local ignoredItems = {
+    'steel-furnace', 'stone-furnace',
+    'transport-belt', 'fast-transport-belt', 'express-transport-belt',
+    'inserter', 'fast-inserter', 'stack-inserter',
+    'assembling-machine-1', 'assembling-machine-2', 'assembling-machine-3',
+    'splitter', 'fast-splitter', 'express-splitter',
+    'underground-belt', 'fast-underground-belt', 'express-underground-belt',
+}
+
+-------------------------------------------------------------------------------- Hide items
+
+local skipList = {}
+for _, v in pairs( ignoredItems ) do skipList[ v ] = true end
+
+for k, v_item in pairs( data.raw.item ) do
+    if not skipList[ v_item.name ] then
+        v_item.flags = { 'hidden' }
+    end
+end
+
+for k, v_item in pairs( data.raw.ammo ) do
+    if not skipList[ v_item.name ] then
+        v_item.flags = { 'hidden' }
+    end
+end
+
+for k, v_item in pairs( data.raw.armor ) do
+    if not skipList[ v_item.name ] then
+        v_item.flags = { 'hidden' }
+    end
+end
+
+for k, v_item in pairs( data.raw.gun ) do
+    if not skipList[ v_item.name ] then
+        v_item.flags = { 'hidden' }
+    end
+end
+
+-------------------------------------------------------------------------------- Turn-off and remove recipies
 for k, v_recp in pairs( data.raw.recipe ) do
     if v_recp.normal then
         v_recp.normal.enabled    = false
@@ -112,7 +150,7 @@ for k, v_recp in pairs( data.raw.recipe ) do
     end
 end
 
--------------------------------------------------------------------------------- Turn-off and remove all technologies
+-------------------------------------------------------------------------------- Turn-off and remove technologies
 for k, v_tech in pairs( data.raw.technology ) do
     v_tech.enabled       = false
     v_tech.hidden        = true
