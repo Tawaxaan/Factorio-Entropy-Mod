@@ -5,15 +5,12 @@ local _math = require( 'common/math' )
 --------------------------------------------------------------------------config
 _forest.cfg = require( '#terrain/forest_cfg' )
 ---------------------------------------------------------------------------local
-local AlienBiome_TreeData = require( '#terrain/forest_alien_biomes' )
-
 local Nauvis
-local ChunksCount = 1024
+local Chunks_count = 1024
 
 local TREE_GROWTH_STAGES  = _forest.cfg.TREE_GROWTH_STAGES
 local TREE_SCALE_SUFFIX   = _forest.cfg.TREE_SCALE_SUFFIX
-local TREE_SCALE_GROUP    = _forest.cfg.TREE_SCALE_GROUP
-local TREE_SCALE_SUBGROUP = _forest.cfg.TREE_SCALE_SUBGROUP
+local TREE_SCALE_SUBGROUP_TREE = _forest.cfg.TREE_SCALE_SUBGROUP_TREE
 --______________________________________________________________________________________________________________________
 --############################################################################## FOREST PROCESSING #####################
 
@@ -30,28 +27,22 @@ local function tree_process( tree )
 
 -- Temporary realisation -------------------------------------------------------
     --log( tree.prototype.subgroup.name )
-    if tree.prototype.subgroup.name == TREE_SCALE_SUBGROUP then
+    if tree.prototype.subgroup.name == TREE_SCALE_SUBGROUP_TREE then
         -- Growing tree
         local stage = string.sub( tree.name, string.len( tree.name ) - 1 ) + 1
-        -- local new_tree_name
+        local newTree_name
         if stage <= TREE_GROWTH_STAGES then
-            new_tree_name = string.sub( tree.name, 1, string.len(tree.name) - 2 )
-            if stage < 10 then
-                new_tree_name = new_tree_name .. '0' .. stage
-            else
-                new_tree_name = new_tree_name .. stage
-            end
-            --log( tree.name .. ' +1 = ' .. stage .. ' !'..new_tree_name)
+            newTree_name = string.sub( tree.name, 1, string.len(tree.name) - 2 )
+            newTree_name = newTree_name .. ( stage < 10 and 0 or '' ) .. stage
         else
-            new_tree_name = string.gsub( tree.name, '-' .. TREE_SCALE_SUFFIX .. (stage-1), '' )
-            --log( tree.name .. ' > ' .. new_tree_name )
+            newTree_name = string.gsub( tree.name, '-' .. TREE_SCALE_SUFFIX .. (stage-1), '' )
         end
         --
-        local new_tree = { name = new_tree_name, position = tree.position }
+        local newTree = { name = newTree_name, position = tree.position }
         tree.destroy()
-        local can_place = Nauvis.can_place_entity( new_tree )
-        if can_place then
-            Nauvis.create_entity( new_tree )
+        local canPlace = Nauvis.can_place_entity( newTree )
+        if canPlace then
+            Nauvis.create_entity( newTree )
         end
     else
         -- Mature tree
@@ -61,20 +52,21 @@ local function tree_process( tree )
 -- DEV SECTION -------------
 -- DEV SECTION -------------
 -- DEV SECTION -------------
-        local split = util.split( tree.name, '-' )
+        local tile = Nauvis.get_tile( new_tree_pos )
+        local split = util.split( tile.name, '-' )
         local tileName1 = split[ 1 ] or ''
         local tileName2 = split[ 2 ] or ''
         local tileName3 = split[ 3 ] or ''
 -- DEV SECTION -------------
 -- DEV SECTION -------------
 -- DEV SECTION -------------
-        local new_tree_name = tree.name --.. '-' .. TREE_SCALE_SUFFIX .. '01'
+        local newTree_name = tree.name .. '-' .. TREE_SCALE_SUFFIX .. '01'
         --
-        local new_tree = { name = new_tree_name, position = new_tree_pos }
-        local can_place = Nauvis.can_place_entity( new_tree )
-        if can_place then
+        local newTree = { name = newTree_name, position = new_tree_pos }
+        local canPlace = Nauvis.can_place_entity( newTree )
+        if canPlace then
             tree.destroy()
-            Nauvis.create_entity( new_tree )
+            Nauvis.create_entity( newTree )
         end
     end
 --------------------------------------------------------------------------------
@@ -104,7 +96,7 @@ local skiper = 0
 function _forest.process()
     Nauvis = Nauvis or game.surfaces[ 'nauvis' ]
     --skiper = skiper + 1
-    if ChunksCount / 1024 >= skiper then
+    if Chunks_count / 1024 >= skiper then
         chunk_process( Nauvis.get_random_chunk() )
     end
     if skiper == 10 then skiper = 0 end
@@ -118,7 +110,7 @@ function _forest.calc_chunks_count()
         count = count + 1
     end
     if count < 1024 then count = 1024 end
-    ChunksCount = count
+    Chunks_count = count
 end
 
 --******************************************************************************
