@@ -30,6 +30,9 @@ data.raw.tile[ 'water-shallow' ].tint = { r = 190, g = 160, b = 180 }
 data.raw.tile[ 'volcanic-orange-heat-2' ].variants  = data.raw.tile[ 'volcanic-orange-heat-1' ].variants
 data.raw.tile[ 'volcanic-orange-heat-3' ].variants  = data.raw.tile[ 'volcanic-orange-heat-1' ].variants
 data.raw.tile[ 'volcanic-orange-heat-4' ].variants  = data.raw.tile[ 'volcanic-orange-heat-1' ].variants
+
+data.raw.tile[ 'volcanic-orange-heat-2' ].map_color = data.raw.tile[ 'volcanic-orange-heat-1' ].map_color
+data.raw.tile[ 'volcanic-orange-heat-3' ].map_color = data.raw.tile[ 'volcanic-orange-heat-1' ].map_color
 data.raw.tile[ 'volcanic-orange-heat-4' ].map_color = data.raw.tile[ 'volcanic-orange-heat-1' ].map_color
 
 data.raw.tile[ 'volcanic-orange-heat-1' ].tint = { r = 235, g = 235, b = 235 }
@@ -45,17 +48,17 @@ decal.autoplace.default_enabled = false
 --______________________________________________________________________________________________________________________
 --############################################################################## GENERIC DECORATIONS COLOR TINT ########
 
-local decalsTintColor = {}
+local tintColors = {}
 
 -- Volcanic land object
-decalsTintColor[ 'puddle-decal'    ] = { r = 255, g =  80, b = 100 }
-decalsTintColor[ 'dark-mud-decal'  ] = { r = 140, g = 140, b = 180 }
+tintColors[ 'puddle-decal'    ] = { r = 255, g =  80, b = 100 }
+tintColors[ 'dark-mud-decal'  ] = { r = 140, g = 140, b = 180 }
 -- Volcanic bush
-decalsTintColor[ 'brown-fluff-dry' ] = { r = 180, g = 180, b = 220 }
-decalsTintColor[ 'red-desert-bush' ] = { r = 180, g = 160, b = 200 }
+tintColors[ 'brown-fluff-dry' ] = { r = 180, g = 180, b = 220 }
+tintColors[ 'red-desert-bush' ] = { r = 180, g = 160, b = 200 }
 
 -------------------------------------------------------------------------------- Applying tint
-for decName, decColor in pairs( decalsTintColor ) do
+for decName, decColor in pairs( tintColors ) do
     local decal = data.raw[ 'optimized-decorative' ][ decName ]
     for _, v_pic in pairs( decal.pictures ) do
         v_pic.tint = decColor
