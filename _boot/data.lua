@@ -67,6 +67,12 @@ settings.startup[ 'alien-biomes-include-coastal-shallows' ].value = true
 --______________________________________________________________________________________________________________________
 --############################################################################## WIPE THIS WORLD ### HO-HO-HO ##########
 
+local ignoredTechnologies = {
+    'construction-robotics', 'personal-roboport-equipment', 'exoskeleton-equipment', 'character-logistic-slots-1',
+    'fluid-handling', 'oil-processing', 'railway', 'automated-rail-transportation', 'rail-signals',
+    --[[ Exception for Time-Tool mod ]] 'circuit-network'
+}
+
 local ignoredRecipies = {
     'rail', 'locomotive', 'cargo-wagon', 'train-stop', 'rail-signal', 'rail-chain-signal',
     'roboport', 'logistic-chest-passive-provider', 'logistic-chest-storage', 'construction-robot',
@@ -87,47 +93,27 @@ local ignoredRecipies = {
     --[[ Exception for Time-Tool mod ]] 'constant-combinator', 'power-switch', 'programmable-speaker'
 }
 
-local ignoredTechnologies = {
-    'construction-robotics', 'personal-roboport-equipment', 'exoskeleton-equipment', 'character-logistic-slots-1',
-    'fluid-handling', 'oil-processing', 'railway', 'automated-rail-transportation', 'rail-signals',
-    --[[ Exception for Time-Tool mod ]] 'circuit-network'
-}
-
 local ignoredItems = {
-    'steel-furnace', 'stone-furnace',
     'transport-belt', 'fast-transport-belt', 'express-transport-belt',
+    'underground-belt', 'fast-underground-belt', 'express-underground-belt',
+    'splitter', 'fast-splitter', 'express-splitter',
     'inserter', 'fast-inserter', 'stack-inserter',
     'assembling-machine-1', 'assembling-machine-2', 'assembling-machine-3',
-    'splitter', 'fast-splitter', 'express-splitter',
-    'underground-belt', 'fast-underground-belt', 'express-underground-belt',
+    'steel-furnace', 'stone-furnace',
 }
 
--------------------------------------------------------------------------------- Hide items
+local itemTypesToHide = { 'item', 'ammo', 'armor', 'gun', 'inserter', 'repair-tool' }
+
+-------------------------------------------------------------------------------- Hide items by types
 
 local skipList = {}
 for _, v in pairs( ignoredItems ) do skipList[ v ] = true end
 
-for k, v_item in pairs( data.raw.item ) do
-    if not skipList[ v_item.name ] then
-        v_item.flags = { 'hidden' }
-    end
-end
-
-for k, v_item in pairs( data.raw.ammo ) do
-    if not skipList[ v_item.name ] then
-        v_item.flags = { 'hidden' }
-    end
-end
-
-for k, v_item in pairs( data.raw.armor ) do
-    if not skipList[ v_item.name ] then
-        v_item.flags = { 'hidden' }
-    end
-end
-
-for k, v_item in pairs( data.raw.gun ) do
-    if not skipList[ v_item.name ] then
-        v_item.flags = { 'hidden' }
+for _, v_itemType in pairs( itemTypesToHide ) do
+    for k, v_item in pairs( data.raw[ v_itemType ] ) do
+        if not skipList[ v_item.name ] then
+            v_item.flags = { 'hidden' }
+        end
     end
 end
 
