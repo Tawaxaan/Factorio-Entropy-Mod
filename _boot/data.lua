@@ -102,7 +102,10 @@ local ignoredItems = {
     'steel-furnace', 'stone-furnace',
 }
 
-local itemTypesToHide = { 'item', 'ammo', 'armor', 'gun', 'inserter', 'repair-tool' }
+local itemTypesToHide = { 'item', 'ammo', 'armor', 'gun',
+                          'inserter', 'repair-tool', 'capsule', 'module',
+                          'blueprint', 'blueprint-book', 'item-with-entity-data'
+}
 
 -------------------------------------------------------------------------------- Hide items by types
 
