@@ -1,0 +1,5 @@
+string,bool,string,string,string
+Name,New,Description,Group,Subgroup
+wood,0,Write your text here,intermediate-products,raw-resource
+stone,0,,intermediate-products,raw-resource
+seed-medusatree,1,Medusa tree seed,intermediate-products,raw-resource
