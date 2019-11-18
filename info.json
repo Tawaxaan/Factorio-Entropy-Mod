@@ -5,7 +5,7 @@
 	"dependencies": [
         "base >= 0.17.0",
         "-entropy-boot = 0.0.0",
-        "alien-biomes >= 0.4.15"
+        "alien-biomes >= 0.4.16"
     ],
 	"title": "Entropy",
 	"author": "Tawaxaan",

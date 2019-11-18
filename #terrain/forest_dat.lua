@@ -144,21 +144,11 @@ function CreateSmallTree( parrentTree, stage )
         newTree.minable.mining_particle = "wooden-particle" .. TINY_PARTICLE_SUFFIX
     end
 
-    -- Sorpse (stump)
+    -- Corpse (stump)
     if newTree.remains_when_mined then
         local suffix  = TREE_SCALE_SUFFIX .. math.floor( ( stage + 3 ) / 4 )
         newTree.remains_when_mined = parrentTree.remains_when_mined .. '-' .. suffix
     end
-
-    -- Loot
-
-    -- if parrentTree.loot then
-    --     for k, v_loot in pairs( parrentTree.loot ) do
-    --         v_loot.count_min   = 0
-    --         v_loot.count_max   = parrentTree.loot[ k ].count_max   * scale
-    --         v_loot.probability = parrentTree.loot[ k ].probability * scale
-    --     end
-    -- end
 
     -- Resizing drawing box
     if newTree.drawing_box then
