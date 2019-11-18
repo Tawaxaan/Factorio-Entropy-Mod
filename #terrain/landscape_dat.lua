@@ -56,6 +56,14 @@ tintColors[ 'dark-mud-decal'  ] = { r = 140, g = 140, b = 180 }
 -- Volcanic bush
 tintColors[ 'brown-fluff-dry' ] = { r = 180, g = 180, b = 220 }
 tintColors[ 'red-desert-bush' ] = { r = 180, g = 160, b = 200 }
+-- Volcanic rocks
+tintColors[ 'rock-tiny-black'   ] = { r = 110, g = 100, b = 100 }
+tintColors[ 'rock-small-black'  ] = { r = 110, g = 100, b = 100 }
+tintColors[ 'rock-medium-black' ] = { r = 110, g = 100, b = 100 }
+--tintColors[ 'rock-tiny-volcanic'   ] = { r = 100, g = 90, b = 90 }
+--tintColors[ 'rock-small-volcanic'  ] = { r = 100, g = 90, b = 90 }
+--tintColors[ 'rock-medium-volcanic' ] = { r = 100, g = 90, b = 90 }
+
 
 -------------------------------------------------------------------------------- Applying tint
 for decName, decColor in pairs( tintColors ) do
