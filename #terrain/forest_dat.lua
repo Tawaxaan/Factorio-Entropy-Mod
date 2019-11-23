@@ -17,7 +17,7 @@ tintColors[ 'tree-volcanic-a' ].leaves = { r = 200, g = 200, b = 255 }
 tintColors[ 'tree-volcanic-a' ].trunk  = { r = 100, g = 120, b = 120 }
 
 -------------------------------------------------------------------------------- Applying tint
-for treeName, treesColor in pairs( tintColors ) do
+for treeName, treeColors in pairs( tintColors ) do
     local tree = data.raw.tree[ treeName ]
     for _, v_var in pairs ( tree.variations ) do
         local leavesColor = tintColors[ treeName ].leaves

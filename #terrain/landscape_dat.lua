@@ -25,12 +25,11 @@ data.raw.tile[ 'water-shallow' ].tint = { r = 190, g = 160, b = 180 }
 --______________________________________________________________________________________________________________________
 --############################################################################## VOLCANIC BIOME ########################
 
--------------------------------------------------------------------------------- Remove orange lava from volcanic tiles
-
 data.raw.tile[ 'volcanic-orange-heat-2' ].variants  = data.raw.tile[ 'volcanic-orange-heat-1' ].variants
 data.raw.tile[ 'volcanic-orange-heat-3' ].variants  = data.raw.tile[ 'volcanic-orange-heat-1' ].variants
 data.raw.tile[ 'volcanic-orange-heat-4' ].variants  = data.raw.tile[ 'volcanic-orange-heat-1' ].variants
 
+data.raw.tile[ 'volcanic-orange-heat-1' ].map_color = { r = 20, g = 20, b = 20 }
 data.raw.tile[ 'volcanic-orange-heat-2' ].map_color = data.raw.tile[ 'volcanic-orange-heat-1' ].map_color
 data.raw.tile[ 'volcanic-orange-heat-3' ].map_color = data.raw.tile[ 'volcanic-orange-heat-1' ].map_color
 data.raw.tile[ 'volcanic-orange-heat-4' ].map_color = data.raw.tile[ 'volcanic-orange-heat-1' ].map_color
@@ -42,8 +41,6 @@ data.raw.tile[ 'volcanic-orange-heat-4' ].tint = { r = 180, g = 180, b = 180 }
 
 local decal = data.raw[ 'optimized-decorative' ][ 'lava-decal-orange' ]
 decal.autoplace.default_enabled = false
-
---------------------------------------------------------------------------------
 
 --______________________________________________________________________________________________________________________
 --############################################################################## GENERIC DECORATIONS COLOR TINT ########
