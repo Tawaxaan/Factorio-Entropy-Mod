@@ -1,9 +1,10 @@
 -------------------------------------------------------------------------require
 local _common   = require( 'common.generic'      )
 
-local _weather  = require( '#planet/weather'     )
-local _forest   = require( "#terrain/forest"     )
-local _inserter = require( '#entities/inserters' )
+local _weather       = require( '#planet/weather'       )
+local _mapGeneration = require( '#planet/mapGeneration' )
+local _forest        = require( "#terrain/forest"       )
+local _inserter      = require( '#entities/inserters'   )
 --------------------------------------------------------------------------config
 require( 'config' )
 ---------------------------------------------------------------------------local
@@ -15,6 +16,7 @@ require( 'config' )
 --****************************************************************************** Script on-init
 script.on_init( function()
     _weather.set_daytime_length()
+    _mapGeneration.init()
 end)
 
 --******************************************************************************
