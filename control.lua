@@ -21,14 +21,14 @@ end)
 
 --******************************************************************************
 
+
 --______________________________________________________________________________________________________________________
 --############################################################################## HOTKEYS EVENTS ########################
 
 --****************************************************************************** Drop-off point swap event
-script.on_event( "entropy-inserter-dropoff-point-swap", function( event )
-    if T_E_S_T then return end
+script.on_event( 'entropy-inserter-dropoff-point-swap', function( event )
     local player = game.players[ event.player_index ]
-    if player.selected and player.selected.type == "inserter" then
+    if player.selected and player.selected.type == 'inserter' then
         if player.can_reach_entity( player.selected ) then
             _inserter.dropoff_point_swap( player.selected )
         else
@@ -38,10 +38,9 @@ script.on_event( "entropy-inserter-dropoff-point-swap", function( event )
 end)
 
 --****************************************************************************** Drop-off rotate event
-script.on_event( "entropy-inserter-dropoff-rotate", function( event )
-    if T_E_S_T then return end
+script.on_event( 'entropy-inserter-dropoff-rotate', function( event )
     local player = game.players[ event.player_index ]
-    if player.selected and player.selected.type == "inserter" then
+    if player.selected and player.selected.type == 'inserter' then
         if player.can_reach_entity( player.selected ) then
             _inserter.dropoff_rotate( player.selected )
         else
@@ -51,6 +50,7 @@ script.on_event( "entropy-inserter-dropoff-rotate", function( event )
 end)
 
 --******************************************************************************
+
 
 --______________________________________________________________________________________________________________________
 --############################################################################## FOREST PROCESSING #####################
@@ -67,4 +67,6 @@ end)
 
 --******************************************************************************
 
+
+--______________________________________________________________________________________________________________________
 --######################################################################################################################
