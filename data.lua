@@ -1,6 +1,7 @@
 -------------------------------------------------------------------------require
 require( 'hotkeys' )
 
+require( '#planet/_data'  )
 require( '#terrain/_data'  )
 require( '#entities/_data' )
 --------------------------------------------------------------------------config
