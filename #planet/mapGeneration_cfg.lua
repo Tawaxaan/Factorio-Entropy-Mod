@@ -38,9 +38,9 @@ local config = {}
 
 -- Landscape -------------------------------------------------------------------
 
-    config.property_expression_names[ 'control-setting:moisture:frequency:multiplier' ] =  8.00
+    config.property_expression_names[ 'control-setting:moisture:frequency:multiplier' ] =  6.00
     config.property_expression_names[ 'control-setting:moisture:bias'                 ] =  0.00
-    config.property_expression_names[ 'control-setting:aux:frequency:multiplier'      ] =  8.00
+    config.property_expression_names[ 'control-setting:aux:frequency:multiplier'      ] =  6.00
     config.property_expression_names[ 'control-setting:aux:bias'                      ] = -0.50
 
     config.autoplace_controls[ 'hot'   ] = {}
@@ -49,9 +49,9 @@ local config = {}
     config.autoplace_controls[ 'hot'   ].richness   = 1.00
 
     config.autoplace_controls[ 'cold'  ] = {}
-    config.autoplace_controls[ 'cold'  ].frequency = 0.00
+    config.autoplace_controls[ 'cold'  ].frequency = 1.00
     config.autoplace_controls[ 'cold'  ].size      = 0.00
-    config.autoplace_controls[ 'cold'  ].richness  = 0.00
+    config.autoplace_controls[ 'cold'  ].richness  = 1.00
 
     config.autoplace_controls[ 'trees' ] = {}
     config.autoplace_controls[ 'trees' ].frequency  = 1.00
