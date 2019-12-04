@@ -44,7 +44,7 @@ local config = {}
     config.property_expression_names[ 'control-setting:aux:bias'                      ] = -0.50
 
     config.autoplace_controls[ 'hot'   ] = {}
-    config.autoplace_controls[ 'hot'   ].frequency  = 1.00
+    config.autoplace_controls[ 'hot'   ].frequency  = 0.50
     config.autoplace_controls[ 'hot'   ].size       = 0.50
     config.autoplace_controls[ 'hot'   ].richness   = 1.00
 
