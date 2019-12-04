@@ -31,9 +31,9 @@ settings.startup[ 'alien-biomes-include-dirt-grey'        ].value = false -- 0-3
 settings.startup[ 'alien-biomes-include-dirt-black'       ].value = false -- 0-30   | 70-100 [>]
 
 settings.startup[ 'alien-biomes-include-dirt-cream'       ].value = false -- 30-60  |  0-30  [ ]
-settings.startup[ 'alien-biomes-include-dirt-beige'       ].value = false -- 30-60  | 30-60  [ ]
+settings.startup[ 'alien-biomes-include-dirt-beige'       ].value = true  -- 30-60  | 30-60  [+]
 settings.startup[ 'alien-biomes-include-dirt-dustyrose'   ].value = false -- 30-60  | 60-80  [ ]
-settings.startup[ 'alien-biomes-include-dirt-aubergine'   ].value = false -- 30-60  | 80-100 [ ]
+settings.startup[ 'alien-biomes-include-dirt-aubergine'   ].value = false -- 30-60  | 80-100 [!]
 
 settings.startup[ 'alien-biomes-include-dirt-tan'         ].value = false -- 60-100 |  0-30  [ ]
 settings.startup[ 'alien-biomes-include-dirt-brown'       ].value = false -- 60-100 | 30-60  [ ]
@@ -50,7 +50,7 @@ settings.startup[ 'alien-biomes-include-sand-black'       ].value = false -- 0-3
 settings.startup[ 'alien-biomes-include-sand-cream'       ].value = false -- 30-60  |  0-30  [ ]
 settings.startup[ 'alien-biomes-include-sand-beige'       ].value = false -- 30-60  | 30-60  [ ]
 settings.startup[ 'alien-biomes-include-sand-dustyrose'   ].value = false -- 30-60  | 60-80  [ ]
-settings.startup[ 'alien-biomes-include-sand-aubergine'   ].value = false -- 30-60  | 80-100 [ ]
+settings.startup[ 'alien-biomes-include-sand-aubergine'   ].value = false -- 30-60  | 80-100 [!]
 
 settings.startup[ 'alien-biomes-include-sand-tan'         ].value = true  -- 60-100 |  0-30  [+]
 settings.startup[ 'alien-biomes-include-sand-brown'       ].value = false -- 60-100 | 30-60  [ ]

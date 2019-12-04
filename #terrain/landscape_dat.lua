@@ -31,70 +31,92 @@ data.raw.tile[ 'water-shallow' ].tint = { r = 190, g = 160, b = 180 }
 --______________________________________________________________________________________________________________________
 --############################################################################## MAP COLORS ############################
 
-local tileMapColors = {}
+local tiles_mapColor = {}
 
 -------------------------------------------------------------------------------- Volcanic
-tileMapColors[    'volcanic-orange-heat-1' ] = { r =  16, g =  16, b =  16 }
-tileMapColors[    'volcanic-orange-heat-2' ] = { r =  16, g =  16, b =  16 }
-tileMapColors[    'volcanic-orange-heat-3' ] = { r =  13, g =  13, b =  13 }
-tileMapColors[    'volcanic-orange-heat-4' ] = { r =  13, g =  13, b =  13 }
+tiles_mapColor[    'volcanic-orange-heat-1' ] = { r =  13, g =  13, b =  13 }
+tiles_mapColor[    'volcanic-orange-heat-2' ] = { r =  13, g =  13, b =  13 }
+tiles_mapColor[    'volcanic-orange-heat-3' ] = { r =  13, g =  13, b =  13 }
+tiles_mapColor[    'volcanic-orange-heat-4' ] = { r =  13, g =  13, b =  13 }
 -------------------------------------------------------------------------------- Dirt red
-tileMapColors[        'mineral-red-dirt-1' ] = { r =  40, g =  30, b =  25 }
-tileMapColors[        'mineral-red-dirt-2' ] = { r =  40, g =  30, b =  25 }
-tileMapColors[        'mineral-red-dirt-4' ] = { r =  40, g =  30, b =  25 }
-tileMapColors[        'mineral-red-dirt-3' ] = { r =  40, g =  30, b =  25 }
-tileMapColors[        'mineral-red-dirt-5' ] = { r =  40, g =  30, b =  25 }
-tileMapColors[        'mineral-red-dirt-6' ] = { r =  40, g =  30, b =  25 }
+tiles_mapColor[        'mineral-red-dirt-1' ] = { r =  65, g =  30, b =  25 }
+tiles_mapColor[        'mineral-red-dirt-2' ] = { r =  65, g =  30, b =  25 }
+tiles_mapColor[        'mineral-red-dirt-4' ] = { r =  65, g =  30, b =  25 }
+tiles_mapColor[        'mineral-red-dirt-3' ] = { r =  65, g =  30, b =  25 }
+tiles_mapColor[        'mineral-red-dirt-5' ] = { r =  65, g =  30, b =  25 }
+tiles_mapColor[        'mineral-red-dirt-6' ] = { r =  65, g =  30, b =  25 }
+-------------------------------------------------------------------------------- Dirt beige
+tiles_mapColor[      'mineral-beige-dirt-1' ] = { r =  40, g =  35, b =  25 }
+tiles_mapColor[      'mineral-beige-dirt-2' ] = { r =  40, g =  35, b =  25 }
+tiles_mapColor[      'mineral-beige-dirt-4' ] = { r =  40, g =  35, b =  25 }
+tiles_mapColor[      'mineral-beige-dirt-3' ] = { r =  40, g =  35, b =  25 }
+tiles_mapColor[      'mineral-beige-dirt-5' ] = { r =  40, g =  35, b =  25 }
+tiles_mapColor[      'mineral-beige-dirt-6' ] = { r =  40, g =  35, b =  25 }
 -------------------------------------------------------------------------------- Grass olive
-tileMapColors[  'vegetation-olive-grass-1' ] = { r =  45, g =  60, b =  40 }
-tileMapColors[  'vegetation-olive-grass-2' ] = { r =  40, g =  55, b =  35 }
+tiles_mapColor[  'vegetation-olive-grass-1' ] = { r =  40, g =  70, b =  30 }
+tiles_mapColor[  'vegetation-olive-grass-2' ] = { r =  40, g =  70, b =  30 }
 -------------------------------------------------------------------------------- Grass orange
-tileMapColors[ 'vegetation-orange-grass-1' ] = { r = 100, g =  50, b =  30 }
-tileMapColors[ 'vegetation-orange-grass-2' ] = { r =  95, g =  45, b =  25 }
+tiles_mapColor[ 'vegetation-orange-grass-1' ] = { r =  95, g =  45, b =  25 }
+tiles_mapColor[ 'vegetation-orange-grass-2' ] = { r =  95, g =  45, b =  25 }
 -------------------------------------------------------------------------------- Desert tan
-tileMapColors[        'mineral-tan-sand-1' ] = { r = 180, g = 160, b = 120 }
-tileMapColors[        'mineral-tan-sand-2' ] = { r = 180, g = 160, b = 120 }
-tileMapColors[        'mineral-tan-sand-3' ] = { r = 180, g = 160, b = 120 }
+tiles_mapColor[        'mineral-tan-sand-1' ] = { r = 180, g = 160, b = 120 }
+tiles_mapColor[        'mineral-tan-sand-2' ] = { r = 180, g = 160, b = 120 }
+tiles_mapColor[        'mineral-tan-sand-3' ] = { r = 180, g = 160, b = 120 }
 --------------------------------------------------------------------------------
 
-for k, v in pairs( tileMapColors ) do
+for k, v in pairs( tiles_mapColor ) do
     data.raw.tile[ k ].map_color = v
 end
 
 --______________________________________________________________________________________________________________________
 --############################################################################## TILES #################################
 
+local tiles_tint = {}
+
 -------------------------------------------------------------------------------- Volcanic
 data.raw.tile[ 'volcanic-orange-heat-2' ].variants  = data.raw.tile[ 'volcanic-orange-heat-1' ].variants
 data.raw.tile[ 'volcanic-orange-heat-3' ].variants  = data.raw.tile[ 'volcanic-orange-heat-1' ].variants
 data.raw.tile[ 'volcanic-orange-heat-4' ].variants  = data.raw.tile[ 'volcanic-orange-heat-1' ].variants
 
-data.raw.tile[ 'volcanic-orange-heat-1' ].tint = { r = 235, g = 235, b = 235 }
-data.raw.tile[ 'volcanic-orange-heat-2' ].tint = { r = 215, g = 215, b = 215 }
-data.raw.tile[ 'volcanic-orange-heat-3' ].tint = { r = 200, g = 200, b = 200 }
-data.raw.tile[ 'volcanic-orange-heat-4' ].tint = { r = 180, g = 180, b = 180 }
+tiles_tint[    'volcanic-orange-heat-1' ] = { r = 235, g = 235, b = 235 }
+tiles_tint[    'volcanic-orange-heat-2' ] = { r = 215, g = 215, b = 215 }
+tiles_tint[    'volcanic-orange-heat-3' ] = { r = 200, g = 200, b = 200 }
+tiles_tint[    'volcanic-orange-heat-4' ] = { r = 180, g = 180, b = 180 }
 -------------------------------------------------------------------------------- Dirt red
 data.raw.tile[ 'mineral-red-dirt-4' ].variants = data.raw.tile[ 'mineral-red-dirt-2' ].variants
 
-data.raw.tile[ 'mineral-red-dirt-1' ].tint = { r = 160, g = 240, b = 235 }
-data.raw.tile[ 'mineral-red-dirt-2' ].tint = { r = 180, g = 245, b = 230 }
-data.raw.tile[ 'mineral-red-dirt-3' ].tint = { r = 180, g = 240, b = 220 }
-data.raw.tile[ 'mineral-red-dirt-4' ].tint = { r = 185, g = 250, b = 235 }
-data.raw.tile[ 'mineral-red-dirt-5' ].tint = { r = 160, g = 200, b = 185 }
-data.raw.tile[ 'mineral-red-dirt-6' ].tint = { r = 150, g = 215, b = 210 }
+tiles_tint[        'mineral-red-dirt-1' ] = { r = 160, g = 240, b = 235 }
+tiles_tint[        'mineral-red-dirt-2' ] = { r = 180, g = 245, b = 230 }
+tiles_tint[        'mineral-red-dirt-3' ] = { r = 180, g = 240, b = 220 }
+tiles_tint[        'mineral-red-dirt-4' ] = { r = 185, g = 250, b = 235 }
+tiles_tint[        'mineral-red-dirt-5' ] = { r = 160, g = 200, b = 185 }
+tiles_tint[        'mineral-red-dirt-6' ] = { r = 150, g = 215, b = 210 }
+-------------------------------------------------------------------------------- Dirt beige
+data.raw.tile[ 'mineral-beige-dirt-2' ].variants = data.raw.tile[ 'mineral-beige-dirt-4' ].variants
+
+tiles_tint[      'mineral-beige-dirt-1' ] = { r = 170, g = 160, b = 175 }
+tiles_tint[      'mineral-beige-dirt-2' ] = { r = 205, g = 190, b = 200 }
+tiles_tint[      'mineral-beige-dirt-3' ] = { r = 205, g = 190, b = 200 }
+tiles_tint[      'mineral-beige-dirt-4' ] = { r = 210, g = 195, b = 200 }
+tiles_tint[      'mineral-beige-dirt-5' ] = { r = 185, g = 165, b = 165 }
+tiles_tint[      'mineral-beige-dirt-6' ] = { r = 160, g = 145, b = 150 }
 -------------------------------------------------------------------------------- Grass olive
-data.raw.tile[ 'vegetation-olive-grass-1' ].tint = { r = 195, g = 210, b = 220 }
-data.raw.tile[ 'vegetation-olive-grass-2' ].tint = { r = 200, g = 220, b = 230 }
+tiles_tint[  'vegetation-olive-grass-1' ] = { r = 195, g = 210, b = 220 }
+tiles_tint[  'vegetation-olive-grass-2' ] = { r = 200, g = 220, b = 230 }
 -------------------------------------------------------------------------------- Grass orange
 data.raw.tile[ 'vegetation-orange-grass-1' ].variants = data.raw.tile[ 'vegetation-orange-grass-2' ].variants
 
-data.raw.tile[ 'vegetation-orange-grass-1' ].tint = { r = 200, g = 210, b = 225 }
-data.raw.tile[ 'vegetation-orange-grass-2' ].tint = { r = 185, g = 200, b = 205 }
+tiles_tint[ 'vegetation-orange-grass-1' ] = { r = 200, g = 210, b = 225 }
+tiles_tint[ 'vegetation-orange-grass-2' ] = { r = 185, g = 200, b = 205 }
 -------------------------------------------------------------------------------- Desert tan
-data.raw.tile[ 'mineral-tan-sand-1' ].tint = { r = 230, g = 230, b = 230 }
-data.raw.tile[ 'mineral-tan-sand-2' ].tint = { r = 230, g = 230, b = 230 }
-data.raw.tile[ 'mineral-tan-sand-3' ].tint = { r = 255, g = 255, b = 255 }
+tiles_tint[        'mineral-tan-sand-1' ] = { r = 230, g = 230, b = 230 }
+tiles_tint[        'mineral-tan-sand-2' ] = { r = 230, g = 230, b = 230 }
+tiles_tint[        'mineral-tan-sand-3' ] = { r = 255, g = 255, b = 255 }
 --------------------------------------------------------------------------------
+
+for k, v in pairs( tiles_tint ) do
+    data.raw.tile[ k ].tint = v
+end
 
 --______________________________________________________________________________________________________________________
 --############################################################################## DECALS ################################
@@ -106,8 +128,8 @@ tintD[ 'puddle-decal'   ] = { r = 255, g =  80, b = 100 }
 --tintD[ 'dark-mud-decal' ] = { r = 140, g = 140, b = 180 }--orange biome
 --tintD[ 'puberty-decal'  ] = { r = 140, g = 140, b = 180 }
 -------------------------------------------------------------------------------- Dirt red
-tintD[ 'sand-decal-red'  ] = { r = 200, g = 170, b = 150 }
-tintD[ 'stone-decal-red' ] = { r = 200, g = 170, b = 150 }
+tintD[ 'sand-decal-red'  ] = { r = 210, g = 180, b = 160 }
+tintD[ 'stone-decal-red' ] = { r = 210, g = 180, b = 160 }
 -------------------------------------------------------------------------------- Grass orange
 tintD[ 'sand-decal-tan'  ] = { r = 190, g = 140, b = 110 }
 tintD[ 'stone-decal-tan' ] = { r = 190, g = 140, b = 110 }
@@ -118,6 +140,14 @@ tintD[ 'sand-dune-decal-tan' ] = { r = 170, g = 170, b = 170 }
 
 --______________________________________________________________________________________________________________________
 --############################################################################## BUSHES ################################
+
+tintD[ 'flower-bush-green-yellow' ] = { r = 180, g = 180, b = 180 }
+--tintD[   'flower-bush-green-blue' ] = { r = 180, g = 180, b = 180 }
+
+
+
+
+
 
 -------------------------------------------------------------------------------- Volcanic
 tintD[ 'brown-fluff-dry' ] = { r = 180, g = 180, b = 220 }
