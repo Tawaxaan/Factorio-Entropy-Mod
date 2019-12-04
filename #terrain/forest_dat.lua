@@ -7,35 +7,6 @@ config = require( '#terrain/forest_cfg' )
 
 
 --______________________________________________________________________________________________________________________
---############################################################################## TREES TINT CORRECTION #################
-
-local tintColors = {}
-
--- Volcanic
-tintColors[ 'tree-volcanic-a' ] = {}
-tintColors[ 'tree-volcanic-a' ].leaves = { r = 200, g = 200, b = 255 }
-tintColors[ 'tree-volcanic-a' ].trunk  = { r = 100, g = 120, b = 120 }
-
--------------------------------------------------------------------------------- Applying tint
-for treeName, treeColors in pairs( tintColors ) do
-    local tree = data.raw.tree[ treeName ]
-    for _, v_var in pairs ( tree.variations ) do
-        local leavesColor = tintColors[ treeName ].leaves
-        v_var.leaves.tint = leavesColor
-        if v_var.leaves.hr_version then
-            v_var.leaves.hr_version.tint = leavesColor
-        end
-        local trunkColor = tintColors[ treeName ].trunk
-        v_var.trunk.tint = trunkColor
-        if v_var.trunk.hr_version then
-           v_var.trunk.hr_version.tint = trunkColor
-        end
-    end
-end
-
---------------------------------------------------------------------------------
-
---______________________________________________________________________________________________________________________
 --############################################################################## SCALED TREES GENERATION ###############
 
 local TREE_GROWTH_STAGES         = config.TREE_GROWTH_STAGES
