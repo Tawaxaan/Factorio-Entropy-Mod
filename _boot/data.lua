@@ -43,7 +43,7 @@ settings.startup[ 'alien-biomes-include-dirt-purple'      ].value = false -- 60-
 
 -- Sand tiles ------------------------------------------------------------------    |
 
-settings.startup[ 'alien-biomes-include-sand-white'       ].value = false -- 0-30   |  0-30  [>]
+settings.startup[ 'alien-biomes-include-sand-white'       ].value = true  -- 0-30   |  0-30  [>]
 settings.startup[ 'alien-biomes-include-sand-grey'        ].value = false -- 0-30   | 30-70  [>]
 settings.startup[ 'alien-biomes-include-sand-black'       ].value = false -- 0-30   | 70-100 [>]
 

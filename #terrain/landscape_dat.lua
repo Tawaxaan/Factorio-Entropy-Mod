@@ -109,9 +109,12 @@ data.raw.tile[ 'vegetation-orange-grass-1' ].variants = data.raw.tile[ 'vegetati
 tiles_tint[ 'vegetation-orange-grass-1' ] = { r = 200, g = 210, b = 225 }
 tiles_tint[ 'vegetation-orange-grass-2' ] = { r = 185, g = 200, b = 205 }
 -------------------------------------------------------------------------------- Desert tan
-tiles_tint[        'mineral-tan-sand-1' ] = { r = 230, g = 230, b = 230 }
-tiles_tint[        'mineral-tan-sand-2' ] = { r = 230, g = 230, b = 230 }
-tiles_tint[        'mineral-tan-sand-3' ] = { r = 255, g = 255, b = 255 }
+data.raw.tile[ 'mineral-tan-sand-1' ].variants = data.raw.tile[ 'mineral-tan-sand-2'   ].variants
+data.raw.tile[ 'mineral-tan-sand-3' ].variants = data.raw.tile[ 'mineral-white-sand-3' ].variants
+
+tiles_tint[        'mineral-tan-sand-1' ] = { r = 245, g = 235, b = 230 }
+tiles_tint[        'mineral-tan-sand-2' ] = { r = 245, g = 230, b = 225 }
+tiles_tint[        'mineral-tan-sand-3' ] = { r = 240, g = 180, b = 110 }
 --------------------------------------------------------------------------------
 
 for k, v in pairs( tiles_tint ) do
@@ -134,7 +137,7 @@ tintD[ 'stone-decal-red' ] = { r = 210, g = 180, b = 160 }
 tintD[ 'sand-decal-tan'  ] = { r = 190, g = 140, b = 110 }
 tintD[ 'stone-decal-tan' ] = { r = 190, g = 140, b = 110 }
 -------------------------------------------------------------------------------- Desert tan
-tintD[ 'sand-dune-decal-tan' ] = { r = 170, g = 170, b = 170 }
+tintD[ 'sand-dune-decal-tan' ] = { r = 230, g = 215, b = 195 }
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 
@@ -188,9 +191,9 @@ tintD[ 'rock-medium-beige' ] = { r = 180, g = 150, b = 95 }
 tintSE[ 'rock-big-beige'   ] = { r = 180, g = 150, b = 95 }
 tintSE[ 'rock-huge-beige'  ] = { r = 180, g = 150, b = 95 }
 -------------------------------------------------------------------------------- Desert tan
-tintD[ 'sand-rock-small-tan'  ] = { r = 255, g = 210, b = 170 }
-tintD[ 'sand-rock-medium-tan' ] = { r = 255, g = 210, b = 170 }
-tintSE[ 'sand-rock-big-tan'   ] = { r = 255, g = 210, b = 170 }
+tintD[  'sand-rock-small-tan' ] = { r = 255, g = 200, b = 130 }
+tintD[ 'sand-rock-medium-tan' ] = { r = 255, g = 200, b = 130 }
+tintSE[   'sand-rock-big-tan' ] = { r = 255, g = 200, b = 130 }
 --------------------------------------------------------------------------------
 
 --______________________________________________________________________________________________________________________
