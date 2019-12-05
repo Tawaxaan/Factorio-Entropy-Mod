@@ -1,7 +1,11 @@
 -------------------------------------------------------------------------require
 --------------------------------------------------------------------------config
 ---------------------------------------------------------------------------local
-
+local tiles_mapColor = {}
+local tiles_tint     = {}
+local decals_tint    = {}
+local entities_tint  = {}
+local trees_tint     = {}
 
 -------------------------------------------------------------------------------- Sets tiles walking speed modifier
 for _, v_tile in pairs( data.raw.tile ) do
@@ -14,24 +18,9 @@ for _, v_tile in pairs( data.raw.tile ) do
     end
 end
 
-local tintD  = {} -- Decoratives tints
-local tintSE = {} -- Simple entities tints
-local tintF  = {} -- Trees tints
-
-
---______________________________________________________________________________________________________________________
---############################################################################## WATER #################################
-
-data.raw.tile[ 'deepwater'     ].tint = { r = 255, g = 100, b = 100 }
-data.raw.tile[ 'water'         ].tint = { r = 255, g = 120, b = 120 }
-data.raw.tile[ 'water-mud'     ].tint = { r = 220, g = 160, b = 170 }
-data.raw.tile[ 'water-shallow' ].tint = { r = 190, g = 160, b = 180 }
-
 
 --______________________________________________________________________________________________________________________
 --############################################################################## MAP COLORS ############################
-
-local tiles_mapColor = {}
 
 -------------------------------------------------------------------------------- Volcanic
 tiles_mapColor[    'volcanic-orange-heat-1' ] = { r =  13, g =  13, b =  13 }
@@ -64,15 +53,15 @@ tiles_mapColor[        'mineral-tan-sand-2' ] = { r = 180, g = 160, b = 120 }
 tiles_mapColor[        'mineral-tan-sand-3' ] = { r = 180, g = 160, b = 120 }
 --------------------------------------------------------------------------------
 
-for k, v in pairs( tiles_mapColor ) do
-    data.raw.tile[ k ].map_color = v
-end
 
 --______________________________________________________________________________________________________________________
 --############################################################################## TILES #################################
 
-local tiles_tint = {}
-
+-------------------------------------------------------------------------------- Water
+tiles_tint[                 'deepwater' ] = { r = 255, g = 100, b = 100 }
+tiles_tint[                     'water' ] = { r = 255, g = 120, b = 120 }
+tiles_tint[                 'water-mud' ] = { r = 220, g = 160, b = 170 }
+tiles_tint[             'water-shallow' ] = { r = 190, g = 160, b = 180 }
 -------------------------------------------------------------------------------- Volcanic
 data.raw.tile[ 'volcanic-orange-heat-2' ].variants  = data.raw.tile[ 'volcanic-orange-heat-1' ].variants
 data.raw.tile[ 'volcanic-orange-heat-3' ].variants  = data.raw.tile[ 'volcanic-orange-heat-1' ].variants
@@ -117,9 +106,6 @@ tiles_tint[        'mineral-tan-sand-2' ] = { r = 245, g = 230, b = 225 }
 tiles_tint[        'mineral-tan-sand-3' ] = { r = 240, g = 180, b = 110 }
 --------------------------------------------------------------------------------
 
-for k, v in pairs( tiles_tint ) do
-    data.raw.tile[ k ].tint = v
-end
 
 --______________________________________________________________________________________________________________________
 --############################################################################## DECALS ################################
@@ -127,90 +113,112 @@ end
 -------------------------------------------------------------------------------- Volcanic
 local decal = data.raw[ 'optimized-decorative' ][ 'lava-decal-orange' ]
 decal.autoplace.default_enabled = false
-tintD[ 'puddle-decal'   ] = { r = 255, g =  80, b = 100 }
---tintD[ 'dark-mud-decal' ] = { r = 140, g = 140, b = 180 }--orange biome
---tintD[ 'puberty-decal'  ] = { r = 140, g = 140, b = 180 }
+decals_tint[ 'puddle-decal'   ] = { r = 255, g =  80, b = 100 }
+--decals_tint[ 'dark-mud-decal' ] = { r = 140, g = 140, b = 180 }--orange biome
+--decals_tint[ 'puberty-decal'  ] = { r = 140, g = 140, b = 180 }
 -------------------------------------------------------------------------------- Dirt red
-tintD[ 'sand-decal-red'  ] = { r = 210, g = 180, b = 160 }
-tintD[ 'stone-decal-red' ] = { r = 210, g = 180, b = 160 }
+decals_tint[ 'sand-decal-red'  ] = { r = 210, g = 180, b = 160 }
+decals_tint[ 'stone-decal-red' ] = { r = 210, g = 180, b = 160 }
 -------------------------------------------------------------------------------- Grass orange
-tintD[ 'sand-decal-tan'  ] = { r = 190, g = 140, b = 110 }
-tintD[ 'stone-decal-tan' ] = { r = 190, g = 140, b = 110 }
+decals_tint[ 'sand-decal-tan'  ] = { r = 190, g = 140, b = 110 }
+decals_tint[ 'stone-decal-tan' ] = { r = 190, g = 140, b = 110 }
 -------------------------------------------------------------------------------- Desert tan
-tintD[ 'sand-dune-decal-tan' ] = { r = 230, g = 215, b = 195 }
+decals_tint[ 'sand-dune-decal-tan' ] = { r = 230, g = 215, b = 195 }
 --------------------------------------------------------------------------------
---------------------------------------------------------------------------------
+
 
 --______________________________________________________________________________________________________________________
 --############################################################################## BUSHES ################################
 
-tintD[ 'flower-bush-green-yellow' ] = { r = 180, g = 180, b = 180 }
---tintD[   'flower-bush-green-blue' ] = { r = 180, g = 180, b = 180 }
-
-
-
-
-
-
+decals_tint[ 'flower-bush-green-yellow' ] = { r = 180, g = 180, b = 180 }
+--decals_tint[   'flower-bush-green-blue' ] = { r = 180, g = 180, b = 180 }
 -------------------------------------------------------------------------------- Volcanic
-tintD[ 'brown-fluff-dry' ] = { r = 180, g = 180, b = 220 }
-tintD[ 'red-desert-bush' ] = { r = 180, g = 160, b = 200 }
+decals_tint[ 'brown-fluff-dry' ] = { r = 180, g = 180, b = 220 }
+decals_tint[ 'red-desert-bush' ] = { r = 180, g = 160, b = 200 }
 --------------------------------------------------------------------------------
---------------------------------------------------------------------------------
+
 
 --______________________________________________________________________________________________________________________
 --############################################################################## ROCKS #################################
 
 -------------------------------------------------------------------------------- Volcanic
-tintD[  'rock-tiny-black'   ] = { r = 110, g = 100, b = 100 }
-tintD[  'rock-small-black'  ] = { r = 110, g = 100, b = 100 }
-tintD[  'rock-medium-black' ] = { r = 110, g = 100, b = 100 }
-tintSE[ 'rock-big-black'    ] = { r = 110, g = 100, b = 100 }
-tintSE[ 'rock-huge-black'   ] = { r = 110, g = 100, b = 100 }
---tintD[ 'rock-tiny-volcanic'   ] = { r = 100, g = 90, b = 90 }
---tintD[ 'rock-small-volcanic'  ] = { r = 100, g = 90, b = 90 }
---tintD[ 'rock-medium-volcanic' ] = { r = 100, g = 90, b = 90 }
---tintSE[ 'rock-big-volcanic'   ] = { r =  80, g = 80, b = 80 }
---tintSE[ 'rock-huge-volcanic'  ] = { r =  80, g = 80, b = 80 }
+decals_tint[  'rock-tiny-black'   ] = { r = 110, g = 100, b = 100 }
+decals_tint[  'rock-small-black'  ] = { r = 110, g = 100, b = 100 }
+decals_tint[  'rock-medium-black' ] = { r = 110, g = 100, b = 100 }
+entities_tint[ 'rock-big-black'    ] = { r = 110, g = 100, b = 100 }
+entities_tint[ 'rock-huge-black'   ] = { r = 110, g = 100, b = 100 }
+--decals_tint[ 'rock-tiny-volcanic'   ] = { r = 100, g = 90, b = 90 }
+--decals_tint[ 'rock-small-volcanic'  ] = { r = 100, g = 90, b = 90 }
+--decals_tint[ 'rock-medium-volcanic' ] = { r = 100, g = 90, b = 90 }
+--entities_tint[ 'rock-big-volcanic'   ] = { r =  80, g = 80, b = 80 }
+--entities_tint[ 'rock-huge-volcanic'  ] = { r =  80, g = 80, b = 80 }
 -------------------------------------------------------------------------------- Dirt red
-tintD[ 'rock-tiny-red'   ] = { r = 150, g = 115, b =  90 }
-tintD[ 'rock-small-red'  ] = { r = 150, g = 115, b =  90 }
-tintD[ 'rock-medium-red' ] = { r = 150, g = 115, b =  90 }
-tintSE[ 'rock-big-red'   ] = { r = 150, g = 115, b =  90 }
-tintSE[ 'rock-huge-red'  ] = { r = 150, g = 115, b =  90 }
+decals_tint[ 'rock-tiny-red'   ] = { r = 150, g = 115, b =  90 }
+decals_tint[ 'rock-small-red'  ] = { r = 150, g = 115, b =  90 }
+decals_tint[ 'rock-medium-red' ] = { r = 150, g = 115, b =  90 }
+entities_tint[ 'rock-big-red'   ] = { r = 150, g = 115, b =  90 }
+entities_tint[ 'rock-huge-red'  ] = { r = 150, g = 115, b =  90 }
 -------------------------------------------------------------------------------- Grass orange
-tintD[ 'rock-tiny-brown'   ] = { r = 180, g = 130, b = 85 }
-tintD[ 'rock-small-brown'  ] = { r = 180, g = 130, b = 85 }
-tintD[ 'rock-medium-brown' ] = { r = 180, g = 130, b = 85 }
-tintSE[ 'rock-big-brown'   ] = { r = 180, g = 130, b = 85 }
-tintSE[ 'rock-huge-brown'  ] = { r = 180, g = 130, b = 85 }
+decals_tint[ 'rock-tiny-brown'   ] = { r = 180, g = 130, b = 85 }
+decals_tint[ 'rock-small-brown'  ] = { r = 180, g = 130, b = 85 }
+decals_tint[ 'rock-medium-brown' ] = { r = 180, g = 130, b = 85 }
+entities_tint[ 'rock-big-brown'   ] = { r = 180, g = 130, b = 85 }
+entities_tint[ 'rock-huge-brown'  ] = { r = 180, g = 130, b = 85 }
 -------------------------------------------------------------------------------- Grass olive
-tintD[ 'rock-tiny-beige'   ] = { r = 180, g = 150, b = 95 }
-tintD[ 'rock-small-beige'  ] = { r = 180, g = 150, b = 95 }
-tintD[ 'rock-medium-beige' ] = { r = 180, g = 150, b = 95 }
-tintSE[ 'rock-big-beige'   ] = { r = 180, g = 150, b = 95 }
-tintSE[ 'rock-huge-beige'  ] = { r = 180, g = 150, b = 95 }
+decals_tint[ 'rock-tiny-beige'   ] = { r = 180, g = 150, b = 95 }
+decals_tint[ 'rock-small-beige'  ] = { r = 180, g = 150, b = 95 }
+decals_tint[ 'rock-medium-beige' ] = { r = 180, g = 150, b = 95 }
+entities_tint[ 'rock-big-beige'   ] = { r = 180, g = 150, b = 95 }
+entities_tint[ 'rock-huge-beige'  ] = { r = 180, g = 150, b = 95 }
 -------------------------------------------------------------------------------- Desert tan
-tintD[  'sand-rock-small-tan' ] = { r = 255, g = 200, b = 130 }
-tintD[ 'sand-rock-medium-tan' ] = { r = 255, g = 200, b = 130 }
-tintSE[   'sand-rock-big-tan' ] = { r = 255, g = 200, b = 130 }
+decals_tint[  'sand-rock-small-tan' ] = { r = 255, g = 200, b = 130 }
+decals_tint[ 'sand-rock-medium-tan' ] = { r = 255, g = 200, b = 130 }
+entities_tint[   'sand-rock-big-tan' ] = { r = 255, g = 200, b = 130 }
 --------------------------------------------------------------------------------
+
 
 --______________________________________________________________________________________________________________________
 --############################################################################## TREES #################################
 
 -------------------------------------------------------------------------------- Volcanic
 -- Medusa tree
-tintF[ 'tree-volcanic-a' ] = {}
-tintF[ 'tree-volcanic-a' ].leaves = { r = 200, g = 200, b = 255 }
-tintF[ 'tree-volcanic-a' ].trunk  = { r = 100, g = 120, b = 120 }
+trees_tint[ 'tree-volcanic-a' ] = {}
+trees_tint[ 'tree-volcanic-a' ].leaves = { r = 200, g = 200, b = 255 }
+trees_tint[ 'tree-volcanic-a' ].trunk  = { r = 100, g = 120, b = 120 }
 --------------------------------------------------------------------------------
---------------------------------------------------------------------------------
+
+for name, color in pairs( trees_tint ) do
+    local tree = data.raw.tree[ name ]
+    for _, v_var in pairs ( tree.variations ) do
+        local leavesColor = trees_tint[ name ].leaves
+        v_var.leaves.tint = leavesColor
+        if v_var.leaves.hr_version then
+            v_var.leaves.hr_version.tint = leavesColor
+        end
+        local trunkColor = trees_tint[ name ].trunk
+        v_var.trunk.tint = trunkColor
+        if v_var.trunk.hr_version then
+           v_var.trunk.hr_version.tint = trunkColor
+        end
+    end
+end
+
 
 --______________________________________________________________________________________________________________________
---############################################################################## APPLYING TINT #########################
+--############################################################################## APPLYING COLORS #######################
 
-for name, color in pairs( tintD ) do
+-------------------------------------------------------------------------------- Tiles map colors
+for k, v in pairs( tiles_mapColor ) do
+    data.raw.tile[ k ].map_color = v
+end
+
+-------------------------------------------------------------------------------- Tiles tints
+for k, v in pairs( tiles_tint ) do
+    data.raw.tile[ k ].tint = v
+end
+
+-------------------------------------------------------------------------------- Optimized-decorative tints
+for name, color in pairs( decals_tint ) do
     local decal = data.raw[ 'optimized-decorative' ][ name ]
     for _, v_pic in pairs( decal.pictures ) do
         v_pic.tint = color
@@ -220,7 +228,8 @@ for name, color in pairs( tintD ) do
     end
 end
 
-for name, color in pairs( tintSE ) do
+-------------------------------------------------------------------------------- Simple-entity tints
+for name, color in pairs( entities_tint ) do
     local rock = data.raw[ 'simple-entity' ][ name ]
     for _, v_pic in pairs ( rock.pictures ) do
         v_pic.tint = color
@@ -230,21 +239,6 @@ for name, color in pairs( tintSE ) do
     end
 end
 
-for name, color in pairs( tintF ) do
-    local tree = data.raw.tree[ name ]
-    for _, v_var in pairs ( tree.variations ) do
-        local leavesColor = tintF[ name ].leaves
-        v_var.leaves.tint = leavesColor
-        if v_var.leaves.hr_version then
-            v_var.leaves.hr_version.tint = leavesColor
-        end
-        local trunkColor = tintF[ name ].trunk
-        v_var.trunk.tint = trunkColor
-        if v_var.trunk.hr_version then
-           v_var.trunk.hr_version.tint = trunkColor
-        end
-    end
-end
 
 --______________________________________________________________________________________________________________________
 --######################################################################################################################
