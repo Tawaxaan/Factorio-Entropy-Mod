@@ -42,10 +42,10 @@ tiles_mapColor[      'mineral-beige-dirt-3' ] = { r =  40, g =  35, b =  25 }
 tiles_mapColor[      'mineral-beige-dirt-5' ] = { r =  40, g =  35, b =  25 }
 tiles_mapColor[      'mineral-beige-dirt-6' ] = { r =  40, g =  35, b =  25 }
 -------------------------------------------------------------------------------- Grass green
-tiles_mapColor[  'vegetation-green-grass-1' ] = { r =   0, g =  40, b =   0 }
-tiles_mapColor[  'vegetation-green-grass-2' ] = { r =   0, g =  40, b =   0 }
-tiles_mapColor[  'vegetation-green-grass-3' ] = { r =   0, g =  40, b =   0 }
-tiles_mapColor[  'vegetation-green-grass-4' ] = { r =   0, g =  40, b =   0 }
+tiles_mapColor[  'vegetation-green-grass-1' ] = { r =   0, g =  50, b =   0 }
+tiles_mapColor[  'vegetation-green-grass-2' ] = { r =   0, g =  50, b =   0 }
+tiles_mapColor[  'vegetation-green-grass-3' ] = { r =   0, g =  50, b =   0 }
+tiles_mapColor[  'vegetation-green-grass-4' ] = { r =   0, g =  50, b =   0 }
 -------------------------------------------------------------------------------- Grass olive
 tiles_mapColor[  'vegetation-olive-grass-1' ] = { r =  40, g =  70, b =  30 }
 tiles_mapColor[  'vegetation-olive-grass-2' ] = { r =  40, g =  70, b =  30 }
@@ -60,6 +60,12 @@ tiles_mapColor[        'mineral-tan-sand-1' ] = { r = 180, g = 160, b = 120 }
 tiles_mapColor[        'mineral-tan-sand-2' ] = { r = 180, g = 160, b = 120 }
 tiles_mapColor[        'mineral-tan-sand-3' ] = { r = 180, g = 160, b = 120 }
 --------------------------------------------------------------------------------
+--[[ keep original colors
+tiles_mapColor[                 'deepwater' ] = { r =  33, g =  65, b =  74 }
+tiles_mapColor[                     'water' ] = { r =  49, g =  81, b =  90 }
+tiles_mapColor[             'water-shallow' ] = { r =  49, g =  97, b = 107 }]]
+tiles_mapColor[                 'water-mud' ] = { r =  35, g =  80, b =  75 }
+-------------------------------------------------------------------------------- Water
 
 
 --______________________________________________________________________________________________________________________
@@ -68,8 +74,8 @@ tiles_mapColor[        'mineral-tan-sand-3' ] = { r = 180, g = 160, b = 120 }
 -------------------------------------------------------------------------------- Water
 tiles_tint[                 'deepwater' ] = { r = 255, g = 100, b = 100 }
 tiles_tint[                     'water' ] = { r = 255, g = 120, b = 120 }
-tiles_tint[                 'water-mud' ] = { r = 220, g = 160, b = 170 }
 tiles_tint[             'water-shallow' ] = { r = 190, g = 160, b = 180 }
+tiles_tint[                 'water-mud' ] = { r = 120, g = 140, b = 120 }
 -------------------------------------------------------------------------------- Volcanic
 data.raw.tile[ 'volcanic-orange-heat-2' ].variants  = data.raw.tile[ 'volcanic-orange-heat-1' ].variants
 data.raw.tile[ 'volcanic-orange-heat-3' ].variants  = data.raw.tile[ 'volcanic-orange-heat-1' ].variants
@@ -100,10 +106,10 @@ tiles_tint[      'mineral-beige-dirt-6' ] = { r = 160, g = 145, b = 150 }
 -------------------------------------------------------------------------------- Grass green
 data.raw.tile[ 'vegetation-green-grass-1' ].variants = data.raw.tile[ 'vegetation-green-grass-2' ].variants
 
-tiles_tint[  'vegetation-green-grass-1' ] = { r = 140, g = 130, b = 255 }
-tiles_tint[  'vegetation-green-grass-2' ] = { r = 145, g = 135, b = 255 }
-tiles_tint[  'vegetation-green-grass-3' ] = { r = 155, g = 145, b = 235 }
-tiles_tint[  'vegetation-green-grass-4' ] = { r = 155, g = 155, b = 240 }
+tiles_tint[  'vegetation-green-grass-1' ] = { r = 145, g = 135, b = 255 }
+tiles_tint[  'vegetation-green-grass-2' ] = { r = 150, g = 140, b = 255 }
+tiles_tint[  'vegetation-green-grass-3' ] = { r = 160, g = 150, b = 235 }
+tiles_tint[  'vegetation-green-grass-4' ] = { r = 160, g = 160, b = 240 }
 -------------------------------------------------------------------------------- Grass olive
 data.raw.tile[ 'vegetation-olive-grass-1' ].variants = data.raw.tile[ 'vegetation-green-grass-1' ].variants
 data.raw.tile[ 'vegetation-olive-grass-2' ].variants = data.raw.tile[ 'vegetation-green-grass-3' ].variants
