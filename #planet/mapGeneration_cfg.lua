@@ -41,22 +41,22 @@ local config = {}
     config.property_expression_names[ 'control-setting:moisture:frequency:multiplier' ] =  2.00
     config.property_expression_names[ 'control-setting:moisture:bias'                 ] =  0.10
     config.property_expression_names[ 'control-setting:aux:frequency:multiplier'      ] =  2.00
-    config.property_expression_names[ 'control-setting:aux:bias'                      ] = -0.50
+    config.property_expression_names[ 'control-setting:aux:bias'                      ] = -0.30
 
     config.autoplace_controls[ 'hot'   ] = {}
-    config.autoplace_controls[ 'hot'   ].frequency  = 0.50
-    config.autoplace_controls[ 'hot'   ].size       = 0.50
-    config.autoplace_controls[ 'hot'   ].richness   = 1.00
+    config.autoplace_controls[ 'hot'   ].frequency  = 1/0.75 -- 1/scale
+    config.autoplace_controls[ 'hot'   ].size       =   0.50 -- coverage
+    config.autoplace_controls[ 'hot'   ].richness   =   1.00
 
     config.autoplace_controls[ 'cold'  ] = {}
-    config.autoplace_controls[ 'cold'  ].frequency = 1.00
-    config.autoplace_controls[ 'cold'  ].size      = 0.00
-    config.autoplace_controls[ 'cold'  ].richness  = 1.00
+    config.autoplace_controls[ 'cold'  ].frequency  = 1/1.00 -- 1/scale
+    config.autoplace_controls[ 'cold'  ].size       =   0.00 -- coverage
+    config.autoplace_controls[ 'cold'  ].richness   =   1.00
 
     config.autoplace_controls[ 'trees' ] = {}
-    config.autoplace_controls[ 'trees' ].frequency  = 1.00
-    config.autoplace_controls[ 'trees' ].size       = 1.00
-    config.autoplace_controls[ 'trees' ].richness   = 1.00
+    config.autoplace_controls[ 'trees' ].frequency  = 1/1.00 -- 1/scale
+    config.autoplace_controls[ 'trees' ].size       =   1.00 -- coverage
+    config.autoplace_controls[ 'trees' ].richness   =   1.00
 
 -- Enemies ---------------------------------------------------------------------
 
