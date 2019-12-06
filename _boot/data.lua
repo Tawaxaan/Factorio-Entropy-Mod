@@ -61,9 +61,9 @@ settings.startup[ 'alien-biomes-include-sand-purple'      ].value = false -- 60-
 -- Grass tiles -----------------------------------------------------------------    |
 
 settings.startup[ 'alien-biomes-include-grass-turquoise'  ].value = false --  0-20  |  0-70  [ ]
-settings.startup[ 'alien-biomes-include-grass-green'      ].value = false -- 20-50  |  0-70  [ ]
+settings.startup[ 'alien-biomes-include-grass-green'      ].value = true  -- 20-50  |  0-70  [+]
 settings.startup[ 'alien-biomes-include-grass-olive'      ].value = true  -- 50-65  |  0-70  [+]
-settings.startup[ 'alien-biomes-include-grass-yellow'     ].value = false -- 65-80  |  0-70  [ ]
+settings.startup[ 'alien-biomes-include-grass-yellow'     ].value = true  -- 65-80  |  0-70  [+]
 settings.startup[ 'alien-biomes-include-grass-orange'     ].value = true  -- 80-100 |  0-70  [+]
 
 settings.startup[ 'alien-biomes-include-grass-blue'       ].value = false --  0-20  | 70-100 [!]

@@ -41,9 +41,17 @@ tiles_mapColor[      'mineral-beige-dirt-4' ] = { r =  40, g =  35, b =  25 }
 tiles_mapColor[      'mineral-beige-dirt-3' ] = { r =  40, g =  35, b =  25 }
 tiles_mapColor[      'mineral-beige-dirt-5' ] = { r =  40, g =  35, b =  25 }
 tiles_mapColor[      'mineral-beige-dirt-6' ] = { r =  40, g =  35, b =  25 }
+-------------------------------------------------------------------------------- Grass green
+tiles_mapColor[  'vegetation-green-grass-1' ] = { r =   0, g =  40, b =   0 }
+tiles_mapColor[  'vegetation-green-grass-2' ] = { r =   0, g =  40, b =   0 }
+tiles_mapColor[  'vegetation-green-grass-3' ] = { r =   0, g =  40, b =   0 }
+tiles_mapColor[  'vegetation-green-grass-4' ] = { r =   0, g =  40, b =   0 }
 -------------------------------------------------------------------------------- Grass olive
 tiles_mapColor[  'vegetation-olive-grass-1' ] = { r =  40, g =  70, b =  30 }
 tiles_mapColor[  'vegetation-olive-grass-2' ] = { r =  40, g =  70, b =  30 }
+-------------------------------------------------------------------------------- Grass yellow
+tiles_mapColor[ 'vegetation-yellow-grass-1' ] = { r =  80, g =  85, b =  25 }
+tiles_mapColor[ 'vegetation-yellow-grass-2' ] = { r =  80, g =  85, b =  25 }
 -------------------------------------------------------------------------------- Grass orange
 tiles_mapColor[ 'vegetation-orange-grass-1' ] = { r =  95, g =  45, b =  25 }
 tiles_mapColor[ 'vegetation-orange-grass-2' ] = { r =  95, g =  45, b =  25 }
@@ -89,9 +97,24 @@ tiles_tint[      'mineral-beige-dirt-3' ] = { r = 205, g = 190, b = 200 }
 tiles_tint[      'mineral-beige-dirt-4' ] = { r = 210, g = 195, b = 200 }
 tiles_tint[      'mineral-beige-dirt-5' ] = { r = 185, g = 165, b = 165 }
 tiles_tint[      'mineral-beige-dirt-6' ] = { r = 160, g = 145, b = 150 }
+-------------------------------------------------------------------------------- Grass green
+data.raw.tile[ 'vegetation-green-grass-1' ].variants = data.raw.tile[ 'vegetation-green-grass-2' ].variants
+
+tiles_tint[  'vegetation-green-grass-1' ] = { r = 140, g = 130, b = 255 }
+tiles_tint[  'vegetation-green-grass-2' ] = { r = 145, g = 135, b = 255 }
+tiles_tint[  'vegetation-green-grass-3' ] = { r = 155, g = 145, b = 235 }
+tiles_tint[  'vegetation-green-grass-4' ] = { r = 155, g = 155, b = 240 }
 -------------------------------------------------------------------------------- Grass olive
-tiles_tint[  'vegetation-olive-grass-1' ] = { r = 195, g = 210, b = 220 }
-tiles_tint[  'vegetation-olive-grass-2' ] = { r = 200, g = 220, b = 230 }
+data.raw.tile[ 'vegetation-olive-grass-1' ].variants = data.raw.tile[ 'vegetation-green-grass-1' ].variants
+data.raw.tile[ 'vegetation-olive-grass-2' ].variants = data.raw.tile[ 'vegetation-green-grass-3' ].variants
+
+tiles_tint[  'vegetation-olive-grass-1' ] = { r = 175, g = 175, b = 240 }
+tiles_tint[  'vegetation-olive-grass-2' ] = { r = 170, g = 190, b = 190 }
+-------------------------------------------------------------------------------- Grass yellow
+data.raw.tile[ 'vegetation-yellow-grass-1' ].variants = data.raw.tile[ 'vegetation-yellow-grass-2' ].variants
+
+tiles_tint[ 'vegetation-yellow-grass-1' ] = { r = 190, g = 175, b = 195 }
+tiles_tint[ 'vegetation-yellow-grass-2' ] = { r = 180, g = 170, b = 180 }
 -------------------------------------------------------------------------------- Grass orange
 data.raw.tile[ 'vegetation-orange-grass-1' ].variants = data.raw.tile[ 'vegetation-orange-grass-2' ].variants
 
@@ -164,12 +187,24 @@ decals_tint[ 'rock-small-brown'  ] = { r = 180, g = 130, b = 85 }
 decals_tint[ 'rock-medium-brown' ] = { r = 180, g = 130, b = 85 }
 entities_tint[ 'rock-big-brown'   ] = { r = 180, g = 130, b = 85 }
 entities_tint[ 'rock-huge-brown'  ] = { r = 180, g = 130, b = 85 }
+-------------------------------------------------------------------------------- Grass green
+decals_tint[ 'rock-tiny-tan'    ] = { r = 180, g = 130, b = 85 }
+decals_tint[ 'rock-small-tan'   ] = { r = 180, g = 130, b = 85 }
+decals_tint[ 'rock-medium-tan'  ] = { r = 180, g = 130, b = 85 }
+entities_tint[ 'rock-big-tan'   ] = { r = 180, g = 130, b = 85 }
+entities_tint[ 'rock-huge-tan'  ] = { r = 180, g = 130, b = 85 }
 -------------------------------------------------------------------------------- Grass olive
 decals_tint[ 'rock-tiny-beige'   ] = { r = 180, g = 150, b = 95 }
 decals_tint[ 'rock-small-beige'  ] = { r = 180, g = 150, b = 95 }
 decals_tint[ 'rock-medium-beige' ] = { r = 180, g = 150, b = 95 }
 entities_tint[ 'rock-big-beige'   ] = { r = 180, g = 150, b = 95 }
 entities_tint[ 'rock-huge-beige'  ] = { r = 180, g = 150, b = 95 }
+-------------------------------------------------------------------------------- Grass yellow
+decals_tint[  'rock-tiny-cream'   ] = { r = 185, g = 150, b = 90 }
+decals_tint[  'rock-small-cream'  ] = { r = 185, g = 150, b = 90 }
+decals_tint[  'rock-medium-cream' ] = { r = 185, g = 150, b = 90 }
+entities_tint[ 'rock-big-cream'   ] = { r = 185, g = 150, b = 90 }
+entities_tint[ 'rock-huge-cream'  ] = { r = 185, g = 150, b = 90 }
 -------------------------------------------------------------------------------- Desert tan
 decals_tint[  'sand-rock-small-tan' ] = { r = 255, g = 200, b = 130 }
 decals_tint[ 'sand-rock-medium-tan' ] = { r = 255, g = 200, b = 130 }
