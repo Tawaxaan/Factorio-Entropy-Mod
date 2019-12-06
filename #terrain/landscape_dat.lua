@@ -22,11 +22,6 @@ end
 --______________________________________________________________________________________________________________________
 --############################################################################## MAP COLORS ############################
 
--------------------------------------------------------------------------------- Volcanic
-tiles_mapColor[    'volcanic-orange-heat-1' ] = { r =  13, g =  13, b =  13 }
-tiles_mapColor[    'volcanic-orange-heat-2' ] = { r =  13, g =  13, b =  13 }
-tiles_mapColor[    'volcanic-orange-heat-3' ] = { r =  13, g =  13, b =  13 }
-tiles_mapColor[    'volcanic-orange-heat-4' ] = { r =  13, g =  13, b =  13 }
 -------------------------------------------------------------------------------- Dirt red
 tiles_mapColor[        'mineral-red-dirt-1' ] = { r =  65, g =  30, b =  25 }
 tiles_mapColor[        'mineral-red-dirt-2' ] = { r =  65, g =  30, b =  25 }
@@ -59,32 +54,23 @@ tiles_mapColor[ 'vegetation-orange-grass-2' ] = { r =  95, g =  45, b =  25 }
 tiles_mapColor[        'mineral-tan-sand-1' ] = { r = 180, g = 160, b = 120 }
 tiles_mapColor[        'mineral-tan-sand-2' ] = { r = 180, g = 160, b = 120 }
 tiles_mapColor[        'mineral-tan-sand-3' ] = { r = 180, g = 160, b = 120 }
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------- Volcanic
+tiles_mapColor[    'volcanic-orange-heat-1' ] = { r =  13, g =  13, b =  13 }
+tiles_mapColor[    'volcanic-orange-heat-2' ] = { r =  13, g =  13, b =  13 }
+tiles_mapColor[    'volcanic-orange-heat-3' ] = { r =  13, g =  13, b =  13 }
+tiles_mapColor[    'volcanic-orange-heat-4' ] = { r =  13, g =  13, b =  13 }
+-------------------------------------------------------------------------------- Water
 --[[ keep original colors
 tiles_mapColor[                 'deepwater' ] = { r =  33, g =  65, b =  74 }
 tiles_mapColor[                     'water' ] = { r =  49, g =  81, b =  90 }
 tiles_mapColor[             'water-shallow' ] = { r =  49, g =  97, b = 107 }]]
 tiles_mapColor[                 'water-mud' ] = { r =  35, g =  80, b =  75 }
--------------------------------------------------------------------------------- Water
+--------------------------------------------------------------------------------
 
 
 --______________________________________________________________________________________________________________________
 --############################################################################## TILES #################################
 
--------------------------------------------------------------------------------- Water
-tiles_tint[                 'deepwater' ] = { r = 255, g = 100, b = 100 }
-tiles_tint[                     'water' ] = { r = 255, g = 120, b = 120 }
-tiles_tint[             'water-shallow' ] = { r = 190, g = 160, b = 180 }
-tiles_tint[                 'water-mud' ] = { r = 120, g = 140, b = 120 }
--------------------------------------------------------------------------------- Volcanic
-data.raw.tile[ 'volcanic-orange-heat-2' ].variants  = data.raw.tile[ 'volcanic-orange-heat-1' ].variants
-data.raw.tile[ 'volcanic-orange-heat-3' ].variants  = data.raw.tile[ 'volcanic-orange-heat-1' ].variants
-data.raw.tile[ 'volcanic-orange-heat-4' ].variants  = data.raw.tile[ 'volcanic-orange-heat-1' ].variants
-
-tiles_tint[    'volcanic-orange-heat-1' ] = { r = 235, g = 235, b = 235 }
-tiles_tint[    'volcanic-orange-heat-2' ] = { r = 215, g = 215, b = 215 }
-tiles_tint[    'volcanic-orange-heat-3' ] = { r = 200, g = 200, b = 200 }
-tiles_tint[    'volcanic-orange-heat-4' ] = { r = 180, g = 180, b = 180 }
 -------------------------------------------------------------------------------- Dirt red
 data.raw.tile[ 'mineral-red-dirt-4' ].variants = data.raw.tile[ 'mineral-red-dirt-2' ].variants
 
@@ -133,18 +119,26 @@ data.raw.tile[ 'mineral-tan-sand-3' ].variants = data.raw.tile[ 'mineral-white-s
 tiles_tint[        'mineral-tan-sand-1' ] = { r = 245, g = 235, b = 230 }
 tiles_tint[        'mineral-tan-sand-2' ] = { r = 245, g = 230, b = 225 }
 tiles_tint[        'mineral-tan-sand-3' ] = { r = 240, g = 180, b = 110 }
+-------------------------------------------------------------------------------- Volcanic
+data.raw.tile[ 'volcanic-orange-heat-2' ].variants  = data.raw.tile[ 'volcanic-orange-heat-1' ].variants
+data.raw.tile[ 'volcanic-orange-heat-3' ].variants  = data.raw.tile[ 'volcanic-orange-heat-1' ].variants
+data.raw.tile[ 'volcanic-orange-heat-4' ].variants  = data.raw.tile[ 'volcanic-orange-heat-1' ].variants
+
+tiles_tint[    'volcanic-orange-heat-1' ] = { r = 235, g = 235, b = 235 }
+tiles_tint[    'volcanic-orange-heat-2' ] = { r = 215, g = 215, b = 215 }
+tiles_tint[    'volcanic-orange-heat-3' ] = { r = 200, g = 200, b = 200 }
+tiles_tint[    'volcanic-orange-heat-4' ] = { r = 180, g = 180, b = 180 }
+-------------------------------------------------------------------------------- Water
+tiles_tint[                 'deepwater' ] = { r = 255, g = 100, b = 100 }
+tiles_tint[                     'water' ] = { r = 255, g = 120, b = 120 }
+tiles_tint[             'water-shallow' ] = { r = 190, g = 160, b = 180 }
+tiles_tint[                 'water-mud' ] = { r = 120, g = 140, b = 120 }
 --------------------------------------------------------------------------------
 
 
 --______________________________________________________________________________________________________________________
 --############################################################################## DECALS ################################
 
--------------------------------------------------------------------------------- Volcanic
-local decal = data.raw[ 'optimized-decorative' ][ 'lava-decal-orange' ]
-decal.autoplace.default_enabled = false
-decals_tint[ 'puddle-decal'   ] = { r = 255, g =  80, b = 100 }
---decals_tint[ 'dark-mud-decal' ] = { r = 140, g = 140, b = 180 }--orange biome
---decals_tint[ 'puberty-decal'  ] = { r = 140, g = 140, b = 180 }
 -------------------------------------------------------------------------------- Dirt red
 decals_tint[ 'sand-decal-red'  ] = { r = 210, g = 180, b = 160 }
 decals_tint[ 'stone-decal-red' ] = { r = 210, g = 180, b = 160 }
@@ -153,6 +147,12 @@ decals_tint[ 'sand-decal-tan'  ] = { r = 190, g = 140, b = 110 }
 decals_tint[ 'stone-decal-tan' ] = { r = 190, g = 140, b = 110 }
 -------------------------------------------------------------------------------- Desert tan
 decals_tint[ 'sand-dune-decal-tan' ] = { r = 230, g = 215, b = 195 }
+-------------------------------------------------------------------------------- Volcanic
+local decal = data.raw[ 'optimized-decorative' ][ 'lava-decal-orange' ]
+decal.autoplace.default_enabled = false
+decals_tint[ 'puddle-decal'   ] = { r = 255, g =  80, b = 100 }
+--decals_tint[ 'dark-mud-decal' ] = { r = 140, g = 140, b = 180 }--orange biome
+--decals_tint[ 'puberty-decal'  ] = { r = 140, g = 140, b = 180 }
 --------------------------------------------------------------------------------
 
 
@@ -170,17 +170,6 @@ decals_tint[ 'red-desert-bush' ] = { r = 180, g = 160, b = 200 }
 --______________________________________________________________________________________________________________________
 --############################################################################## ROCKS #################################
 
--------------------------------------------------------------------------------- Volcanic
-decals_tint[  'rock-tiny-black'   ] = { r = 110, g = 100, b = 100 }
-decals_tint[  'rock-small-black'  ] = { r = 110, g = 100, b = 100 }
-decals_tint[  'rock-medium-black' ] = { r = 110, g = 100, b = 100 }
-entities_tint[ 'rock-big-black'    ] = { r = 110, g = 100, b = 100 }
-entities_tint[ 'rock-huge-black'   ] = { r = 110, g = 100, b = 100 }
---decals_tint[ 'rock-tiny-volcanic'   ] = { r = 100, g = 90, b = 90 }
---decals_tint[ 'rock-small-volcanic'  ] = { r = 100, g = 90, b = 90 }
---decals_tint[ 'rock-medium-volcanic' ] = { r = 100, g = 90, b = 90 }
---entities_tint[ 'rock-big-volcanic'   ] = { r =  80, g = 80, b = 80 }
---entities_tint[ 'rock-huge-volcanic'  ] = { r =  80, g = 80, b = 80 }
 -------------------------------------------------------------------------------- Dirt red
 decals_tint[ 'rock-tiny-red'   ] = { r = 150, g = 115, b =  90 }
 decals_tint[ 'rock-small-red'  ] = { r = 150, g = 115, b =  90 }
@@ -215,6 +204,17 @@ entities_tint[ 'rock-huge-cream'  ] = { r = 185, g = 150, b = 90 }
 decals_tint[  'sand-rock-small-tan' ] = { r = 255, g = 200, b = 130 }
 decals_tint[ 'sand-rock-medium-tan' ] = { r = 255, g = 200, b = 130 }
 entities_tint[   'sand-rock-big-tan' ] = { r = 255, g = 200, b = 130 }
+-------------------------------------------------------------------------------- Volcanic
+decals_tint[  'rock-tiny-black'   ] = { r = 110, g = 100, b = 100 }
+decals_tint[  'rock-small-black'  ] = { r = 110, g = 100, b = 100 }
+decals_tint[  'rock-medium-black' ] = { r = 110, g = 100, b = 100 }
+entities_tint[ 'rock-big-black'    ] = { r = 110, g = 100, b = 100 }
+entities_tint[ 'rock-huge-black'   ] = { r = 110, g = 100, b = 100 }
+--decals_tint[ 'rock-tiny-volcanic'   ] = { r = 100, g = 90, b = 90 }
+--decals_tint[ 'rock-small-volcanic'  ] = { r = 100, g = 90, b = 90 }
+--decals_tint[ 'rock-medium-volcanic' ] = { r = 100, g = 90, b = 90 }
+--entities_tint[ 'rock-big-volcanic'   ] = { r =  80, g = 80, b = 80 }
+--entities_tint[ 'rock-huge-volcanic'  ] = { r =  80, g = 80, b = 80 }
 --------------------------------------------------------------------------------
 
 

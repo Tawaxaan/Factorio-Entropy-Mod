@@ -37,7 +37,7 @@ settings.startup[ 'alien-biomes-include-dirt-aubergine'   ].value = false -- 30-
 
 settings.startup[ 'alien-biomes-include-dirt-tan'         ].value = false -- 60-100 |  0-30  [ ]
 settings.startup[ 'alien-biomes-include-dirt-brown'       ].value = false -- 60-100 | 30-60  [ ]
-settings.startup[ 'alien-biomes-include-dirt-red'         ].value = true  -- 60-100 | 60-80  [+]
+settings.startup[ 'alien-biomes-include-dirt-red'         ].value = true  -- 60-100 | 60-80  [+] too rare
 settings.startup[ 'alien-biomes-include-dirt-violet'      ].value = false -- 60-100 | 80-90  [!]
 settings.startup[ 'alien-biomes-include-dirt-purple'      ].value = false -- 60-100 | 90-100 [!]
 
